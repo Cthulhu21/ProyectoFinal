@@ -6,6 +6,7 @@
 
 class Juego: public QGraphicsView
 {
+    Q_OBJECT
 public:
     //Constructor
     Juego(QWidget *parent=NULL);
@@ -16,6 +17,8 @@ public:
     //Metodos públicos
 
     void MenuInicial();
+public slots:
+
 
 };
 
