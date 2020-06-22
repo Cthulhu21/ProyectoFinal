@@ -2,4 +2,9 @@
     <qresource prefix="/Fondo">
         <file>Recursos/Fondo.png</file>
     </qresource>
+    <qresource prefix="/Personajes">
+        <file alias="Caballero">Recursos/Armored Knight.png</file>
+        <file alias="Pri">Recursos/Knight Horse.png</file>
+        <file>Recursos/Sword.gif</file>
+    </qresource>
 </RCC>

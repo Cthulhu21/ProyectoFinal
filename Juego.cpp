@@ -1,5 +1,10 @@
 #include "Juego.h"
 #include "Boton.h"
+#include <QGraphicsPixmapItem>
+#include <Jugador.h>
+#include <QTimeLine>
+
+Jugador *Jugador1;
 
 Juego::Juego(QWidget *parent)
 {
@@ -37,6 +42,7 @@ void Juego::MenuInicial()
     int BYPos= 250;
     Jugar->setPos(BXPos, BYPos);
     Pantalla->addItem(Jugar);
+    connect(Jugar,SIGNAL(clicked()),this,SLOT(Animacion()));
 
     //Boton para Cargar
     Boton *Cargar = new Boton(QString("Cargar"),200,50);
@@ -51,4 +57,13 @@ void Juego::MenuInicial()
     BYPos = 450;
     Salir->setPos(BXPos, BYPos);
     Pantalla->addItem(Salir);
+}
+
+void Juego::Animacion()
+{
+    Pantalla->clear();
+    Jugador1= new Jugador(150,150);
+    Jugador1->setFlag(QGraphicsItem::ItemIsFocusable);
+    Jugador1->setFocus();
+    Pantalla->addItem(Jugador1);
 }

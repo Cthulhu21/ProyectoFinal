@@ -3,6 +3,7 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QGraphicsItemAnimation>
 
 class Juego: public QGraphicsView
 {
@@ -19,6 +20,7 @@ public:
     void MenuInicial();
 public slots:
 
+    void Animacion();
 
 };
 

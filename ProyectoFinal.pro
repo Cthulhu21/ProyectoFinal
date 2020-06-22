@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Boton.cpp \
     Juego.cpp \
+    Jugador.cpp \
     main.cpp
 
 HEADERS += \
     Boton.h \
-    Juego.h
+    Juego.h \
+    Jugador.h
 
 TRANSLATIONS += \
     ProyectoFinal_es_CO.ts
