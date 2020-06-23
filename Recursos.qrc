@@ -3,8 +3,374 @@
         <file>Recursos/Fondo.png</file>
     </qresource>
     <qresource prefix="/Personajes">
-        <file alias="Caballero">Recursos/Armored Knight.png</file>
         <file alias="Pri">Recursos/Knight Horse.png</file>
-        <file>Recursos/Sword.gif</file>
+    </qresource>
+    <qresource prefix="/PersonajePrincipal">
+        <file alias="A_Ab1">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_1.png</file>
+        <file alias="A_Ab2">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_2.png</file>
+        <file alias="A_Ab3">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_3.png</file>
+        <file alias="A_Ab4">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_4.png</file>
+        <file alias="A_Ab5">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_5.png</file>
+        <file alias="A_Ab6">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_6.png</file>
+        <file alias="A_Ab7">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_7.png</file>
+        <file alias="A_Ab8">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_8.png</file>
+        <file alias="A_Ab9">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_9.png</file>
+        <file alias="A_Ab10">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_10.png</file>
+        <file alias="A_Ab11">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_11.png</file>
+        <file alias="A_Ab12">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_12.png</file>
+        <file alias="A_Ab13">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_13.png</file>
+        <file alias="A_Ab14">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_14.png</file>
+        <file alias="A_Ab15">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_15.png</file>
+        <file alias="A_Ab16">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_16.png</file>
+        <file alias="A_Ab17">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_17.png</file>
+        <file alias="A_Ab18">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_18.png</file>
+        <file alias="A_Ab19">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_19.png</file>
+        <file alias="A_Ab20">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_20.png</file>
+        <file alias="A_Ab21">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_21.png</file>
+        <file alias="A_Ab22">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_22.png</file>
+        <file alias="A_Ab23">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_23.png</file>
+        <file alias="A_Ab24">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_24.png</file>
+        <file alias="A_Ab25">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_25.png</file>
+        <file alias="A_Ab26">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_26.png</file>
+        <file alias="A_Ab27">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_27.png</file>
+        <file alias="A_Ab28">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_28.png</file>
+        <file alias="A_Ab29">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_29.png</file>
+        <file alias="A_Ab30">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_30.png</file>
+        <file alias="A_Ab31">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_31.png</file>
+        <file alias="A_Ab32">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_32.png</file>
+        <file alias="A_Ab33">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_33.png</file>
+        <file alias="A_Ab34">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_34.png</file>
+        <file alias="A_Ab35">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_35.png</file>
+        <file alias="A_Ab36">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_36.png</file>
+        <file alias="A_Ab37">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_37.png</file>
+        <file alias="A_Ab38">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_38.png</file>
+        <file alias="A_Ab39">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_39.png</file>
+        <file alias="A_Ab40">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_40.png</file>
+        <file alias="A_Ab41">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_41.png</file>
+        <file alias="A_Ab42">Recursos/DLC_Enemy_EvilWill_BigSwordMain_Down_42.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_6.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_7.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_8.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_9.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_10.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_11.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_12.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_13.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_14.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_15.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_16.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_17.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_18.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_19.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_20.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_21.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_22.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_23.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_24.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_25.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_26.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_27.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_28.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_29.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_30.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_31.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_32.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_33.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_34.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_35.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_36.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_37.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_38.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_39.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_40.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_41.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_Left_42.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_6.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_7.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_8.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_9.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_10.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_11.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_12.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_13.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_14.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_15.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_16.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_17.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_18.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_19.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_20.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_21.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_22.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_23.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_24.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_25.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_26.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_27.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_28.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_29.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_30.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_31.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_32.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_33.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_34.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_35.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_36.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_37.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_38.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_39.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_40.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_41.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordMain_UP_42.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_6.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_7.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_8.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_9.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_10.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_11.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_12.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_13.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_14.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_15.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_16.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_17.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_18.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_19.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_20.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_21.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_22.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_23.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_24.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_25.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_26.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_27.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_28.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_29.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BigSwordSecondary_30.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_1 #73581.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_2 #71315.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_3 #72779.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_4 #72526.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_5 #70965.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_6 #72289.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_6.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_7 #73715.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_7.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_8 #74299.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowArrow_8.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Down_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Down_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Down_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Down_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Down_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Left_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Left_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Left_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Left_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Left_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Right_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Right_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Right_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Right_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Right_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Up_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Up_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Up_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Up_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowMain_Up_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_6.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_7.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_8.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_9.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_10.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_11.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_12.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_14.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_15.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_16.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_17.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_18.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_19.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_20.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_21.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_22.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_23.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_24.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Down_25.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_6.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_7.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_8.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_9.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_10.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_11.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_12.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_14.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_15.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_16.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_17.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_18.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_19.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_20.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_21.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_22.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_23.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_24.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_Left_25.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_6.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_7.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_8.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_9.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_10.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_11.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_12.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_14.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_15.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_16.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_17.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_18.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_19.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_20.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_21.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_22.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_23.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_24.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_right_25.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_6.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_7.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_8.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_9.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_10.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_11.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_12.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_14.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_15.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_16.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_17.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_18.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_19.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_20.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_21.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_22.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_23.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_24.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_BowSecondary_up_25.png</file>
+        <file alias="Esta_Ab1">Recursos/DLC_Enemy_EvilWill_Idle_Down_1.png</file>
+        <file alias="Esta_Ab2">Recursos/DLC_Enemy_EvilWill_Idle_Down_2.png</file>
+        <file alias="Esta_Ab3">Recursos/DLC_Enemy_EvilWill_Idle_Down_3.png</file>
+        <file alias="Esta_Ab4">Recursos/DLC_Enemy_EvilWill_Idle_Down_4.png</file>
+        <file alias="Esta_Ab5">Recursos/DLC_Enemy_EvilWill_Idle_Down_5.png</file>
+        <file alias="Esta_Ab6">Recursos/DLC_Enemy_EvilWill_Idle_Down_6.png</file>
+        <file alias="Esta_Ab7">Recursos/DLC_Enemy_EvilWill_Idle_Down_7.png</file>
+        <file alias="Esta_Ab8">Recursos/DLC_Enemy_EvilWill_Idle_Down_8.png</file>
+        <file alias="Esta_Ab9">Recursos/DLC_Enemy_EvilWill_Idle_Down_9.png</file>
+        <file alias="Esta_Ab10">Recursos/DLC_Enemy_EvilWill_Idle_Down_10.png</file>
+        <file alias="Esta_Iz1">Recursos/DLC_Enemy_EvilWill_Idle_Side_1.png</file>
+        <file alias="Esta_Iz2">Recursos/DLC_Enemy_EvilWill_Idle_Side_2.png</file>
+        <file alias="Esta_Iz3">Recursos/DLC_Enemy_EvilWill_Idle_Side_3.png</file>
+        <file alias="Esta_Iz4">Recursos/DLC_Enemy_EvilWill_Idle_Side_4.png</file>
+        <file alias="Esta_Iz5">Recursos/DLC_Enemy_EvilWill_Idle_Side_5.png</file>
+        <file alias="Esta_Iz6">Recursos/DLC_Enemy_EvilWill_Idle_Side_6.png</file>
+        <file alias="Esta_Iz7">Recursos/DLC_Enemy_EvilWill_Idle_Side_7.png</file>
+        <file alias="Esta_Iz8">Recursos/DLC_Enemy_EvilWill_Idle_Side_8.png</file>
+        <file alias="Esta_Iz9">Recursos/DLC_Enemy_EvilWill_Idle_Side_9.png</file>
+        <file alias="Esta_Iz10">Recursos/DLC_Enemy_EvilWill_Idle_Side_10.png</file>
+        <file alias="Esta_Ar1">Recursos/DLC_Enemy_EvilWill_Idle_Up_1.png</file>
+        <file alias="Esta_Ar2">Recursos/DLC_Enemy_EvilWill_Idle_Up_2.png</file>
+        <file alias="Esta_Ar3">Recursos/DLC_Enemy_EvilWill_Idle_Up_3.png</file>
+        <file alias="Esta_Ar4">Recursos/DLC_Enemy_EvilWill_Idle_Up_4.png</file>
+        <file alias="Esta_Ar5">Recursos/DLC_Enemy_EvilWill_Idle_Up_5.png</file>
+        <file alias="Esta_Ar6">Recursos/DLC_Enemy_EvilWill_Idle_Up_6.png</file>
+        <file alias="Esta_Ar7">Recursos/DLC_Enemy_EvilWill_Idle_Up_7.png</file>
+        <file alias="Esta_Ar8">Recursos/DLC_Enemy_EvilWill_Idle_Up_8.png</file>
+        <file alias="Esta_Ar9">Recursos/DLC_Enemy_EvilWill_Idle_Up_9.png</file>
+        <file alias="Esta_Ar10">Recursos/DLC_Enemy_EvilWill_Idle_Up_10.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Down_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Down_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Down_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Down_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Down_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Down_6.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Down_7.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Down_8.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Side_11.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Side_12.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Side_13.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Side_14.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Side_15.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Side_16.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Side_17.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Side_18.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Up_1.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Up_2.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Up_3.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Up_4.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Up_5.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Up_6.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Up_7.png</file>
+        <file>Recursos/DLC_Enemy_EvilWill_Roll_Up_8.png</file>
+        <file alias="Correr_Ab1">Recursos/DLC_Enemy_EvilWill_Run_Down_1.png</file>
+        <file alias="Correr_Ab2">Recursos/DLC_Enemy_EvilWill_Run_Down_2.png</file>
+        <file alias="Correr_Ab3">Recursos/DLC_Enemy_EvilWill_Run_Down_3.png</file>
+        <file alias="Correr_Ab4">Recursos/DLC_Enemy_EvilWill_Run_Down_4.png</file>
+        <file alias="Correr_Ab5">Recursos/DLC_Enemy_EvilWill_Run_Down_5.png</file>
+        <file alias="Correr_Ab6">Recursos/DLC_Enemy_EvilWill_Run_Down_6.png</file>
+        <file alias="Correr_Ab7">Recursos/DLC_Enemy_EvilWill_Run_Down_7.png</file>
+        <file alias="Correr_Ab8">Recursos/DLC_Enemy_EvilWill_Run_Down_8.png</file>
+        <file alias="Correr_Iz1">Recursos/DLC_Enemy_EvilWill_Run_Side_1.png</file>
+        <file alias="Correr_Iz2">Recursos/DLC_Enemy_EvilWill_Run_Side_2.png</file>
+        <file alias="Correr_Iz3">Recursos/DLC_Enemy_EvilWill_Run_Side_3.png</file>
+        <file alias="Correr_Iz4">Recursos/DLC_Enemy_EvilWill_Run_Side_4.png</file>
+        <file alias="Correr_Iz5">Recursos/DLC_Enemy_EvilWill_Run_Side_5.png</file>
+        <file alias="Correr_Iz6">Recursos/DLC_Enemy_EvilWill_Run_Side_6.png</file>
+        <file alias="Correr_Iz7">Recursos/DLC_Enemy_EvilWill_Run_Side_7.png</file>
+        <file alias="Correr_Iz8">Recursos/DLC_Enemy_EvilWill_Run_Side_8.png</file>
+        <file alias="Correr_Arr1">Recursos/DLC_Enemy_EvilWill_Run_Up_1.png</file>
+        <file alias="Correr_Arr2">Recursos/DLC_Enemy_EvilWill_Run_Up_2.png</file>
+        <file alias="Correr_Arr3">Recursos/DLC_Enemy_EvilWill_Run_Up_3.png</file>
+        <file alias="Correr_Arr4">Recursos/DLC_Enemy_EvilWill_Run_Up_4.png</file>
+        <file alias="Correr_Arr5">Recursos/DLC_Enemy_EvilWill_Run_Up_5.png</file>
+        <file alias="Correr_Arr6">Recursos/DLC_Enemy_EvilWill_Run_Up_6.png</file>
+        <file alias="Correr_Arr7">Recursos/DLC_Enemy_EvilWill_Run_Up_7.png</file>
+        <file alias="Correr_Arr8">Recursos/DLC_Enemy_EvilWill_Run_Up_8.png</file>
     </qresource>
 </RCC>
