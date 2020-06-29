@@ -19,12 +19,14 @@ SOURCES += \
     Boton.cpp \
     Juego.cpp \
     Jugador.cpp \
+    Mapa.cpp \
     main.cpp
 
 HEADERS += \
     Boton.h \
     Juego.h \
-    Jugador.h
+    Jugador.h \
+    Mapa.h
 
 TRANSLATIONS += \
     ProyectoFinal_es_CO.ts
