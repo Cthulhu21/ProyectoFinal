@@ -25,6 +25,7 @@ public:
     //Constructor
     Jugador(NumeroJugador _Jugador, int X, int Y, QGraphicsItem *parent=NULL);
 
+    void CargarSprites();
     void Pausar();
     void Despausar();
 
@@ -89,7 +90,18 @@ private:
 
     Tecla TeclaPresionada(QKeyEvent *event);
 
-    QList<QPixmap> ListaMovimiento;
+    QList<QPixmap> ParadoDerecha;
+    QList<QPixmap> ParadoIzquierda;
+    QList<QPixmap> ParadoArriba;
+    QList<QPixmap> ParadoAbajo;
+    QList<QPixmap> CorrerDerecha;
+    QList<QPixmap> CorrerIzquierda;
+    QList<QPixmap> CorrerArriba;
+    QList<QPixmap> CorrerAbajo;
+    QList<QPixmap> AtacarDerecha;
+    QList<QPixmap> AtacarIzquierda;
+    QList<QPixmap> AtacarArriba;
+    QList<QPixmap> AtacarAbajo;
 
 
 public slots:

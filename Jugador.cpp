@@ -8,6 +8,8 @@ Jugador::Jugador(NumeroJugador _NumeroJugador ,int X, int Y, QGraphicsItem *pare
 {
     // Se inicializa al personaje
 
+    //Cargar los sprites
+    CargarSprites();
     // Para las fisicas
     Numero=_NumeroJugador;
     PosX=X;
@@ -26,6 +28,157 @@ Jugador::Jugador(NumeroJugador _NumeroJugador ,int X, int Y, QGraphicsItem *pare
     //Actualizar animacion del jugador
     connect(Animacion, SIGNAL(timeout()), this, SLOT(Movimiento()));
     Animacion->start(60);
+}
+
+void Jugador::CargarSprites()
+{
+    //Se cargan todos los sprites en sus respectivas listas
+    //Parado Derecha
+    for(int i=1; i<11; i++)
+    {
+        std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Iz";
+        _DireccionArchivo+=(std::to_string(i));
+        QString DireccionArchivo;
+        for(auto Letra : _DireccionArchivo)
+        {
+            DireccionArchivo+=Letra;
+        }
+        ParadoDerecha.push_back(QPixmap(DireccionArchivo).transformed(QTransform().scale(-1,1)));
+    }
+    //Parado Izquierda
+    for(int i=1; i<11; i++)
+    {
+        std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Iz";
+        _DireccionArchivo+=(std::to_string(i));
+        QString DireccionArchivo;
+        for(auto Letra : _DireccionArchivo)
+        {
+            DireccionArchivo+=Letra;
+        }
+        ParadoIzquierda.push_back(QPixmap(DireccionArchivo));
+        //Lista.push_back(QPixmap(DireccionArchivo).scaled(400,400,Qt::AspectRatioMode::KeepAspectRatio));
+    }
+    //Parado Arriba
+    for(int i=1; i<11; i++)
+    {
+        std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Ar";
+        _DireccionArchivo+=(std::to_string(i));
+        QString DireccionArchivo;
+        for(auto Letra : _DireccionArchivo)
+        {
+            DireccionArchivo+=Letra;
+        }
+        ParadoArriba.push_back(QPixmap(DireccionArchivo));
+    }
+    //Parado Abajo
+    for(int i=1; i<11; i++)
+    {
+        std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Ab";
+        _DireccionArchivo+=(std::to_string(i));
+        QString DireccionArchivo;
+        for(auto Letra : _DireccionArchivo)
+        {
+            DireccionArchivo+=Letra;
+        }
+        ParadoAbajo.push_back(QPixmap(DireccionArchivo));
+    }
+    //Correr Derecha
+    for(int i=1; i<9; i++)
+    {
+        std::string _DireccionArchivo=":/PersonajePrincipal/Correr_Iz";
+        _DireccionArchivo+=(std::to_string(i));
+        QString DireccionArchivo;
+        for(auto Letra : _DireccionArchivo)
+        {
+            DireccionArchivo+=Letra;
+        }
+        CorrerDerecha.push_back(QPixmap(DireccionArchivo).transformed(QTransform().scale(-1,1)));
+    }
+    //Correr Izquierda
+    for(int i=1; i<9; i++)
+    {
+        std::string _DireccionArchivo=":/PersonajePrincipal/Correr_Iz";
+        _DireccionArchivo+=(std::to_string(i));
+        QString DireccionArchivo;
+        for(auto Letra : _DireccionArchivo)
+        {
+            DireccionArchivo+=Letra;
+        }
+        CorrerIzquierda.push_back(QPixmap(DireccionArchivo));
+    }
+    //Correr Arriba
+    for(int i=1; i<9; i++)
+    {
+        std::string _DireccionArchivo=":/PersonajePrincipal/Correr_Arr";
+        _DireccionArchivo+=(std::to_string(i));
+        QString DireccionArchivo;
+        for(auto Letra : _DireccionArchivo)
+        {
+            DireccionArchivo+=Letra;
+        }
+        CorrerArriba.push_back(QPixmap(DireccionArchivo));
+    }
+    //Correr Abajo
+    for(int i=1; i<9; i++)
+    {
+        std::string _DireccionArchivo=":/PersonajePrincipal/Correr_Ab";
+        _DireccionArchivo+=(std::to_string(i));
+        QString DireccionArchivo;
+        for(auto Letra : _DireccionArchivo)
+        {
+            DireccionArchivo+=Letra;
+        }
+        CorrerAbajo.push_back(QPixmap(DireccionArchivo));
+    }
+    //Ataque Derecha
+    for(int i=1; i<43; i++)
+    {
+        std::string _DireccionArchivo=":/PersonajePrincipal/A_Iz";
+        _DireccionArchivo+=(std::to_string(i));
+        QString DireccionArchivo;
+        for(auto Letra : _DireccionArchivo)
+        {
+            DireccionArchivo+=Letra;
+        }
+        AtacarDerecha.push_back(QPixmap(DireccionArchivo).transformed(QTransform().scale(-1,1)));
+    }
+    //Atacar Izquierda
+    for(int i=1; i<43; i++)
+    {
+        std::string _DireccionArchivo=":/PersonajePrincipal/A_Iz";
+        _DireccionArchivo+=(std::to_string(i));
+        QString DireccionArchivo;
+        for(auto Letra : _DireccionArchivo)
+        {
+            DireccionArchivo+=Letra;
+        }
+        AtacarIzquierda.push_back(QPixmap(DireccionArchivo));
+    }
+    //Ataque Arriba
+    for(int i=1; i<43; i++)
+    {
+        std::string _DireccionArchivo=":/PersonajePrincipal/A_Ar";
+        _DireccionArchivo+=(std::to_string(i));
+        QString DireccionArchivo;
+        for(auto Letra : _DireccionArchivo)
+        {
+            DireccionArchivo+=Letra;
+        }
+        AtacarArriba.push_back(QPixmap(DireccionArchivo));
+        //Lista.push_back(QPixmap(DireccionArchivo).scaled(650,650,Qt::AspectRatioMode::KeepAspectRatio));
+    }
+    //Ataque Abajo
+    for(int i=1; i<43; i++)
+    {
+        std::string _DireccionArchivo=":/PersonajePrincipal/A_Ab";
+        _DireccionArchivo+=(std::to_string(i));
+        QString DireccionArchivo;
+        for(auto Letra : _DireccionArchivo)
+        {
+            DireccionArchivo+=Letra;
+        }
+        AtacarAbajo.push_back(QPixmap(DireccionArchivo));
+    }
 }
 
 void Jugador::Pausar()
@@ -60,6 +213,8 @@ void Jugador::Actualizar()
     VelocidadX = VelocidadX + AceleracionX*DeltaTiempo;
     VelocidadY = VelocidadY + AceleracionY*DeltaTiempo;
 
+
+
     // Se verifica que no se salga del mapa; si lo hace, se toma como choque -> Velocidad 0
 
     PosX=(PosX<0)? 0: PosX;
@@ -78,6 +233,61 @@ void Jugador::Actualizar()
     }
 
     setPos(PosX, PosY);
+}
+
+void Jugador::Mover()
+{
+    switch (Numero)
+    {
+    case Primero:
+        if(!Atacando)
+        {
+            int PlusAceleracion=0, PlusVelocidad=40;
+            switch (Direccion)
+            {
+            case Derecha:
+                Jugador1->Velocidad(VelocidadX+PlusVelocidad, VelocidadY, AceleracionX+PlusAceleracion, AceleracionY);
+                break;
+            case Izquierda:
+                Jugador1->Velocidad(VelocidadX-PlusVelocidad, VelocidadY, AceleracionX-PlusAceleracion, AceleracionY);
+                break;
+            case Arriba:
+                Jugador1->Velocidad(VelocidadX, VelocidadY-PlusVelocidad, AceleracionX, AceleracionY-PlusAceleracion);
+                break;
+            case Abajo:
+                Jugador1->Velocidad(VelocidadX, VelocidadY+PlusVelocidad, AceleracionX,AceleracionY+PlusAceleracion);
+                break;
+            default:
+                break;
+            }
+        }
+        break;
+    case Segundo:
+        if(!Atacando)
+        {
+            int PlusAceleracion=0, PlusVelocidad=40;
+            switch (Direccion)
+            {
+            case Derecha:
+                Jugador2->Velocidad(VelocidadX+PlusVelocidad, VelocidadY, AceleracionX+PlusAceleracion, AceleracionY);
+                break;
+            case Izquierda:
+                Jugador2->Velocidad(VelocidadX-PlusVelocidad, VelocidadY, AceleracionX-PlusAceleracion, AceleracionY);
+                break;
+            case Arriba:
+                Jugador2->Velocidad(VelocidadX, VelocidadY-PlusVelocidad, AceleracionX, AceleracionY-PlusAceleracion);
+                break;
+            case Abajo:
+                Jugador2->Velocidad(VelocidadX, VelocidadY+PlusVelocidad, AceleracionX,AceleracionY+PlusAceleracion);
+                break;
+            default:
+                break;
+            }
+        }
+        break;
+    default:
+        break;
+    }
 }
 
 void Jugador::keyPressEvent(QKeyEvent *event)
@@ -111,10 +321,10 @@ void Jugador::Velocidad(float _VelocidadX, float _VelocidadY, float _Aceleracion
 {
     // Se actualiza la velocidad y posicion
 
-    VelocidadX=_VelocidadX;
-    VelocidadY=_VelocidadY;
-    AceleracionX=_AceleracionX;
-    AceleracionY=_AceleracionY;
+    VelocidadX+=_VelocidadX;
+    VelocidadY+=_VelocidadY;
+    AceleracionX+=_AceleracionX;
+    AceleracionY+=_AceleracionY;
 }
 
 QList<QPixmap> Jugador::CargarMovimiento()
@@ -325,9 +535,10 @@ void Jugador::Movimiento()
     {
         Estatico=(VelocidadX==0 and VelocidadY==0)? true: false;
 
-        // Se llama a los sprites de movimiento
-
-        ListaMovimiento=CargarMovimiento();
+        EjecutarMovimientos();
+    }
+    else
+    {
         EjecutarMovimientos();
     }
 }
@@ -377,73 +588,115 @@ Tecla Jugador::TeclaPresionada(QKeyEvent *event)
     return Presionada;
 }
 
-void Jugador::Mover()
-{
-    switch (Numero)
-    {
-    case Primero:
-        if(!Atacando)
-        {
-            int PlusAceleracion=0, PlusVelocidad=40;
-            switch (Direccion)
-            {
-            case Derecha:
-                Jugador1->Velocidad(VelocidadX+PlusVelocidad, VelocidadY, AceleracionX+PlusAceleracion, AceleracionY);
-                break;
-            case Izquierda:
-                Jugador1->Velocidad(VelocidadX-PlusVelocidad, VelocidadY, AceleracionX-PlusAceleracion, AceleracionY);
-                break;
-            case Arriba:
-                Jugador1->Velocidad(VelocidadX, VelocidadY-PlusVelocidad, AceleracionX, AceleracionY-PlusAceleracion);
-                break;
-            case Abajo:
-                Jugador1->Velocidad(VelocidadX, VelocidadY+PlusVelocidad, AceleracionX,AceleracionY+PlusAceleracion);
-                break;
-            default:
-                break;
-            }
-        }
-        break;
-    case Segundo:
-        if(!Atacando)
-        {
-            int PlusAceleracion=0, PlusVelocidad=40;
-            switch (Direccion)
-            {
-            case Derecha:
-                Jugador2->Velocidad(VelocidadX+PlusVelocidad, VelocidadY, AceleracionX+PlusAceleracion, AceleracionY);
-                break;
-            case Izquierda:
-                Jugador2->Velocidad(VelocidadX-PlusVelocidad, VelocidadY, AceleracionX-PlusAceleracion, AceleracionY);
-                break;
-            case Arriba:
-                Jugador2->Velocidad(VelocidadX, VelocidadY-PlusVelocidad, AceleracionX, AceleracionY-PlusAceleracion);
-                break;
-            case Abajo:
-                Jugador2->Velocidad(VelocidadX, VelocidadY+PlusVelocidad, AceleracionX,AceleracionY+PlusAceleracion);
-                break;
-            default:
-                break;
-            }
-        }
-        break;
-    default:
-        break;
-    }
-}
-
 void Jugador::EjecutarMovimientos()
 {
-    if(FrameMovimiento>=ListaMovimiento.size())
+    if(!Atacando)
     {
-        FrameMovimiento=0;
-        TimerMovimiento->stop();
-        Moviendose=false;
+        if(Estatico)
+        {
+            switch (Direccion)
+            {
+            case Derecha:
+                if(FrameMovimiento>=ParadoDerecha.size())
+                {
+                    FrameMovimiento=0;
+                }
+                else
+                {
+                    setPixmap(ParadoDerecha[FrameMovimiento]);
+                    FrameMovimiento++;
+                }
+                break;
+            case Izquierda:
+                if(FrameMovimiento>=ParadoIzquierda.size())
+                {
+                    FrameMovimiento=0;
+                }
+                else
+                {
+                    setPixmap(ParadoIzquierda[FrameMovimiento]);
+                    FrameMovimiento++;
+                }
+                break;
+            case Arriba:
+                if(FrameMovimiento>=ParadoArriba.size())
+                {
+                    FrameMovimiento=0;
+                }
+                else
+                {
+                    setPixmap(ParadoArriba[FrameMovimiento]);
+                    FrameMovimiento++;
+                }
+                break;
+            case Abajo:
+                if(FrameMovimiento>=ParadoAbajo.size())
+                {
+                    FrameMovimiento=0;
+                }
+                else
+                {
+                    setPixmap(ParadoAbajo[FrameMovimiento]);
+                    FrameMovimiento++;
+                }
+                break;
+            default:
+                break;
+            }
+        }
+        else
+    {
+        switch (Direccion)
+        {
+        case Derecha:
+            if(FrameMovimiento>=CorrerDerecha.size())
+            {
+                FrameMovimiento=0;
+            }
+            else
+            {
+                setPixmap(CorrerDerecha[FrameMovimiento]);
+                FrameMovimiento++;
+            }
+            break;
+        case Izquierda:
+            if(FrameMovimiento>=CorrerIzquierda.size())
+            {
+                FrameMovimiento=0;
+            }
+            else
+            {
+                setPixmap(CorrerIzquierda[FrameMovimiento]);
+                FrameMovimiento++;
+            }
+            break;
+        case Arriba:
+            if(FrameMovimiento>=CorrerArriba.size())
+            {
+                FrameMovimiento=0;
+            }
+            else
+            {
+                setPixmap(CorrerArriba[FrameMovimiento]);
+                FrameMovimiento++;
+            }
+            break;
+        case Abajo:
+            if(FrameMovimiento>=CorrerAbajo.size())
+            {
+                FrameMovimiento=0;
+            }
+            else
+            {
+                setPixmap(CorrerAbajo[FrameMovimiento]);
+                FrameMovimiento++;
+            }
+            break;
+        default:
+            break;
+        }
+
     }
-    else
-    {
-        setPixmap(ListaMovimiento[FrameMovimiento]);
-        FrameMovimiento++;
     }
 }
 
@@ -453,31 +706,96 @@ void Jugador::Ataque()
     Atacando=true;
     Animacion->stop();
     Delta->stop();
-    ListaMovimiento=CargarMovimiento();
+
     TimerAtaque->start(20);
     connect(TimerAtaque, SIGNAL(timeout()), this, SLOT(EjecutarAtaque()));
 }
 
 void Jugador::EjecutarAtaque()
 {
-    if(FrameAtaque>=ListaMovimiento.size())
+    switch (Direccion)
     {
-        TimerAtaque->stop();
-        FrameAtaque=0;
-        FrameMovimiento=0;
-        Atacando=false;
-        FixAtaque=true;
+    case Derecha:
+        if(FrameMovimiento>=AtacarDerecha.size())
+        {
+            TimerAtaque->stop();
+            FrameAtaque=0;
+            FrameMovimiento=0;
+            Atacando=false;
+            FixAtaque=true;
 
-        Direccion=_Direccion;
-        ListaMovimiento=CargarMovimiento();
+            Direccion=_Direccion;
 
-        Delta->start(1);
-        Animacion->start(60);
+            Delta->start(1);
+            Animacion->start(60);
+        }
+        else
+        {
+            setPos(PosX-65, PosY-58);
+            setPixmap(AtacarDerecha[FrameMovimiento++]);
+        }
+        break;
+    case Izquierda:
+        if(FrameMovimiento>=AtacarIzquierda.size())
+        {
+            TimerAtaque->stop();
+            FrameAtaque=0;
+            FrameMovimiento=0;
+            Atacando=false;
+            FixAtaque=true;
 
-    }
-    else
-    {
-        setPos(PosX-65, PosY-58);
-        setPixmap(ListaMovimiento[FrameAtaque++]);
+            Direccion=_Direccion;
+
+            Delta->start(1);
+            Animacion->start(60);
+        }
+        else
+        {
+            setPos(PosX-65, PosY-58);
+            setPixmap(AtacarIzquierda[FrameMovimiento++]);
+        }
+        break;
+    case Arriba:
+        if(FrameMovimiento>=AtacarArriba.size())
+        {
+            TimerAtaque->stop();
+            FrameAtaque=0;
+            FrameMovimiento=0;
+            Atacando=false;
+            FixAtaque=true;
+
+            Direccion=_Direccion;
+
+            Delta->start(1);
+            Animacion->start(60);
+        }
+        else
+        {
+            setPos(PosX-65, PosY-58);
+            setPixmap(AtacarArriba[FrameMovimiento++]);
+        }
+        break;
+    case Abajo:
+        if(FrameMovimiento>=AtacarAbajo.size())
+        {
+            TimerAtaque->stop();
+            FrameAtaque=0;
+            FrameMovimiento=0;
+            Atacando=false;
+            FixAtaque=true;
+
+            Direccion=_Direccion;
+
+            Delta->start(1);
+            Animacion->start(60);
+        }
+        else
+        {
+            setPos(PosX-65, PosY-58);
+            setPixmap(AtacarAbajo[FrameMovimiento++]);
+        }
+        break;
+    default:
+        break;
     }
 }
