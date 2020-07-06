@@ -4,6 +4,7 @@
 #include <Jugador.h>
 #include <QTimeLine>
 #include <windows.h>
+#include "Enemigo.h"
 
 Jugador *Jugador1;
 Jugador *Jugador2;
@@ -80,11 +81,15 @@ void Juego::MenuPausa()
     {
         JuegoActivo=false;
         Jugador1->Pausar();
+        for(int i=0; i<EnemigosActuales.size(); i++)
+        {
+            EnemigosActuales[i]->Pausar();
+        }
 
         int BXPos = this->width()/2 - Continuar->boundingRect().width()/2;
         Continuar->setPos(BXPos, 150);
         Pantalla->addItem(Continuar);
-        connect(Continuar,SIGNAL(clicked()),this,SLOT(ContinuarJuego()));
+        connect(Continuar,SIGNAL(clicked()),this,SLOT(CerrarMenuPausa()));
 
         Guardar->setPos(BXPos, 250);
         Pantalla->addItem(Guardar);
@@ -102,10 +107,22 @@ void Juego::MenuPausa()
     }
 }
 
+void Juego::AgregarDrop(Objeto *_Drop)
+{
+    //Agrega el objeto recibido al escenario
+    Pantalla->addItem(_Drop);
+    _Drop->MostrarEnMapa();
+}
+
 void Juego::CerrarMenuPausa()
 {
     //Se eliminan los botones del escenario
+    JuegoActivo=true;
     Jugador1->Despausar();
+    for(int i =0; i<EnemigosActuales.size(); i++)
+    {
+        EnemigosActuales[i]->Despausar();
+    }
     QList<QGraphicsItem*> Items=Pantalla->items();
     int i=0;
     for(auto Elemento : Items)
@@ -130,13 +147,9 @@ void Juego::CargarMapas()
     Mapas.push_back(_Mapa);
 }
 
-void Juego::ContinuarJuego()
-{
-    JuegoActivo=true;
-    Jugador1->Despausar();
-}
 void Juego::Animacion()
 {
+    //
     JuegoStart=true;
     JuegoActivo=true;
 
@@ -145,5 +158,16 @@ void Juego::Animacion()
     Jugador1= new Jugador(Primero, 0, 0);
     Jugador1->setFlag(QGraphicsItem::ItemIsFocusable);
     Jugador1->setFocus();
+
+    Enemigo *Slime1= new Enemigo(100,100), *Slime2 = new Enemigo(200,200), *Slime3= new Enemigo(300,300);
+
+    EnemigosActuales.push_back(Slime1);
+    EnemigosActuales.push_back(Slime2);
+    EnemigosActuales.push_back(Slime3);
+
+    Pantalla->addItem(Slime1);
+    Pantalla->addItem(Slime2);
+    Pantalla->addItem(Slime3);
+
     Pantalla->addItem(Jugador1);
 }

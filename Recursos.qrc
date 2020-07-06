@@ -374,4 +374,20 @@
     <qresource prefix="/Mapas">
         <file alias="Fondo">Recursos/Mapas/Fondo.png</file>
     </qresource>
+    <qresource prefix="/Enemigos">
+        <file alias="Slimes">Recursos/Enemigos/Slimes.png</file>
+        <file alias="Slime_Par1">Recursos/Enemigos/Slime/DLC_Enemy_GiantSlime_Idle_1.png</file>
+        <file alias="Slime_Par2">Recursos/Enemigos/Slime/DLC_Enemy_GiantSlime_Idle_2.png</file>
+        <file alias="Slime_Par3">Recursos/Enemigos/Slime/DLC_Enemy_GiantSlime_Idle_3.png</file>
+        <file alias="Slime_Par4">Recursos/Enemigos/Slime/DLC_Enemy_GiantSlime_Idle_4.png</file>
+        <file alias="Slime_Par5">Recursos/Enemigos/Slime/DLC_Enemy_GiantSlime_Idle_5.png</file>
+        <file alias="Slime_Par6">Recursos/Enemigos/Slime/DLC_Enemy_GiantSlime_Idle_6.png</file>
+        <file alias="Slime_Par7">Recursos/Enemigos/Slime/DLC_Enemy_GiantSlime_Idle_7.png</file>
+        <file alias="Slime_Par8">Recursos/Enemigos/Slime/DLC_Enemy_GiantSlime_Idle_8.png</file>
+        <file alias="Slime_Par9">Recursos/Enemigos/Slime/DLC_Enemy_GiantSlime_Idle_9.png</file>
+        <file alias="Slime_Par10">Recursos/Enemigos/Slime/DLC_Enemy_GiantSlime_Idle_10.png</file>
+    </qresource>
+    <qresource prefix="/Objetos">
+        <file alias="CharcoRosa">Recursos/Enemigos/Slime/Slime.png</file>
+    </qresource>
 </RCC>

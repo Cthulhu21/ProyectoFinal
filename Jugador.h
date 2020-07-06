@@ -7,6 +7,7 @@
 #include <QList>
 #include <Boton.h>
 #include <Juego.h>
+#include "Inventario.h"
 
 //Una enumeracion de diferentes posibles teclas presionadas.
 //Será útil para cambios de sprites de movimiento con switch
@@ -28,11 +29,19 @@ public:
     void CargarSprites();
     void Pausar();
     void Despausar();
+    bool GetAtacando();
+    void Hurt(int _Hurt);
+    void AgregarAInventario(Objeto * _Objeto);
 
     void keyPressEvent(QKeyEvent *event);
 
     //Funcion para agregar velocidad y aceleracion a el objeto(Jugador)
     void Velocidad(float _VelocidadX, float _VelocidadY, float _AceleracionX=0, float _AceleracionY=0);
+
+    //Atributos publicos
+    int AtaqueJugador=10;
+    int Defensa=10;
+    int Vida=10;
 
 private:
 
@@ -67,8 +76,7 @@ private:
     Tecla Direccion=Abajo;
     Tecla _Direccion=Abajo;
 
-
-    QList<QGraphicsPixmapItem *> Inventario;
+    Inventario InventarioJugadores;
     // Primer o segundo jugador
 
     NumeroJugador Numero;
@@ -86,6 +94,7 @@ private:
     bool Estatico=true;
     bool Atacando=false;
     bool FixAtaque=false;
+    bool AtaqueEfectivo=false;
 
 
     Tecla TeclaPresionada(QKeyEvent *event);

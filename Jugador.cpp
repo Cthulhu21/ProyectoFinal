@@ -1,5 +1,6 @@
 #include "Jugador.h"
 #include <math.h>
+#include "Enemigo.h"
 
 extern Jugador *Jugador1, *Jugador2;
 extern Juego *Game;
@@ -33,6 +34,7 @@ Jugador::Jugador(NumeroJugador _NumeroJugador ,int X, int Y, QGraphicsItem *pare
 void Jugador::CargarSprites()
 {
     //Se cargan todos los sprites en sus respectivas listas
+
     //Parado Derecha
     for(int i=1; i<11; i++)
     {
@@ -197,42 +199,69 @@ void Jugador::Despausar()
     Animacion->start(60);
 }
 
+bool Jugador::GetAtacando()
+{
+    //Retorna si el jugador está atacando o no
+    return Atacando;
+}
+
+void Jugador::Hurt(int _Hurt)
+{
+    Vida-=_Hurt-Defensa;
+}
+
+void Jugador::AgregarAInventario(Objeto *_Objeto)
+{
+    //Agrega un Objeto al inventario del jugador
+    //Y quita el objeto del suelo
+    InventarioJugadores.AgregarObjeto(_Objeto);
+    Game->Pantalla->removeItem(_Objeto);
+    delete _Objeto;
+}
+
 void Jugador::Actualizar()
 {
-    // Se actualizan los datos de posicion y velocidad
-
-    VectorVelocidad = sqrt((pow(VelocidadX,2)+pow(VelocidadY,2)));
-    Angulo = atan2(VelocidadY,VelocidadX);
-
-    AceleracionX = (ResistenciaAire*pow(VectorVelocidad,2))*-cos(Angulo);
-    AceleracionY = (ResistenciaAire*pow(VectorVelocidad,2))*-sin(Angulo);
-
-    PosX = PosX + VelocidadX*DeltaTiempo + ((AceleracionX*pow(DeltaTiempo,2))/2);
-    PosY = PosY + VelocidadY*DeltaTiempo + ((AceleracionY*pow(DeltaTiempo,2))/2);
-
-    VelocidadX = VelocidadX + AceleracionX*DeltaTiempo;
-    VelocidadY = VelocidadY + AceleracionY*DeltaTiempo;
-
-
-
-    // Se verifica que no se salga del mapa; si lo hace, se toma como choque -> Velocidad 0
-
-    PosX=(PosX<0)? 0: PosX;
-    PosY=(PosY<0)? 0: PosY;
-    // Determina velocidad mínima
+    if(Vida<=0)
     {
-        float VelocidadMinima=5;
-        if(abs(VelocidadX)<VelocidadMinima)
-        {
-            VelocidadX=0;
-        }
-        if(abs(VelocidadY)<VelocidadMinima)
-        {
-            VelocidadY=0;
-        }
+        //Se retorna al primer mapa
     }
+    else
+    {
+        // Se actualizan los datos de posicion y velocidad
 
-    setPos(PosX, PosY);
+        VectorVelocidad = sqrt((pow(VelocidadX,2)+pow(VelocidadY,2)));
+        Angulo = atan2(VelocidadY,VelocidadX);
+
+        AceleracionX = (ResistenciaAire*pow(VectorVelocidad,2))*-cos(Angulo);
+        AceleracionY = (ResistenciaAire*pow(VectorVelocidad,2))*-sin(Angulo);
+
+        PosX = PosX + VelocidadX*DeltaTiempo + ((AceleracionX*pow(DeltaTiempo,2))/2);
+        PosY = PosY + VelocidadY*DeltaTiempo + ((AceleracionY*pow(DeltaTiempo,2))/2);
+
+        VelocidadX = VelocidadX + AceleracionX*DeltaTiempo;
+        VelocidadY = VelocidadY + AceleracionY*DeltaTiempo;
+
+
+
+        // Se verifica que no se salga del mapa; si lo hace, se toma como choque -> Velocidad 0
+
+        PosX=(PosX<0)? 0: PosX;
+        PosY=(PosY<0)? 0: PosY;
+        // Determina velocidad mínima
+        {
+            float VelocidadMinima=5;
+            if(abs(VelocidadX)<VelocidadMinima)
+            {
+                VelocidadX=0;
+            }
+            if(abs(VelocidadY)<VelocidadMinima)
+            {
+                VelocidadY=0;
+            }
+        }
+
+        setPos(PosX, PosY);
+    }
 }
 
 void Jugador::Mover()
@@ -731,6 +760,15 @@ void Jugador::EjecutarAtaque()
         }
         else
         {
+            QList<QGraphicsItem *> Colision= collidingItems();
+            for(auto Elemento : Colision)
+            {
+                if(typeid (*Elemento)== typeid (Enemigo))
+                {
+                    int i=0;
+                    i++;
+                }
+            }
             setPos(PosX-65, PosY-58);
             setPixmap(AtacarDerecha[FrameMovimiento++]);
         }
