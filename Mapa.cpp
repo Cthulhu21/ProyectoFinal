@@ -1,4 +1,8 @@
 #include "Mapa.h"
+#include "Enemigo.h"
+#include "Juego.h"
+
+extern Juego *Game;
 
 Mapa::Mapa(int _ID, QImage *_Fondo)
 {

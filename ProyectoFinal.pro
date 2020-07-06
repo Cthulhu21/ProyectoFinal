@@ -17,16 +17,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Boton.cpp \
+    Enemigo.cpp \
+    EntidadDinamica.cpp \
+    Inventario.cpp \
     Juego.cpp \
     Jugador.cpp \
     Mapa.cpp \
+    NPC.cpp \
+    Objeto.cpp \
     main.cpp
 
 HEADERS += \
     Boton.h \
+    Enemigo.h \
+    EntidadDinamica.h \
+    Inventario.h \
     Juego.h \
     Jugador.h \
-    Mapa.h
+    Mapa.h \
+    NPC.h \
+    Objeto.h
 
 TRANSLATIONS += \
     ProyectoFinal_es_CO.ts
