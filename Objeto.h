@@ -20,6 +20,7 @@ public:
 
     //Metodos
     void MostrarEnMapa();
+
 public slots:
     void Recoger();
 };

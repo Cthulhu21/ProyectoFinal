@@ -345,6 +345,8 @@ void Jugador::keyPressEvent(QKeyEvent *event)
     case Esc:
         Game->MenuPausa();
         break;
+    case I:
+        InventarioJugadores.MostrarInventario();
     default:
         break;
     }
@@ -613,6 +615,9 @@ Tecla Jugador::TeclaPresionada(QKeyEvent *event)
             Presionada=Esc;
             Direccion=_Direccion;
             break;
+        case Qt::Key_I:
+            Presionada=I;
+            Direccion=_Direccion;
         default:
             Direccion=_Direccion;
             break;

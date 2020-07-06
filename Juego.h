@@ -8,6 +8,7 @@
 #include <Boton.h>
 #include <QKeyEvent>
 #include "Enemigo.h"
+#include "Objeto.h"
 
 class Juego: public QGraphicsView
 {
@@ -21,6 +22,7 @@ public:
     bool JuegoStart=false;
     QGraphicsScene *Pantalla;
     QList<Enemigo*> EnemigosActuales;
+    QList<Objeto*> ObjetosSuelo;
 
     //Metodos públicos
 
@@ -48,6 +50,7 @@ public slots:
 
     void Animacion();
     void CerrarMenuPausa();
+    void Cerrar();
 
 };
 

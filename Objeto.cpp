@@ -24,7 +24,7 @@ void Objeto::Recoger()
     QList<QGraphicsItem *> Circundantes=collidingItems();
     for(int i=0; i<Circundantes.size();i++)
     {
-        if(typeid(Circundantes[i])==typeid (Jugador))
+        if(typeid(*Circundantes[i])==typeid (Jugador))
         {
             Jugador1->AgregarAInventario(this);
             Game->Pantalla->removeItem(this);

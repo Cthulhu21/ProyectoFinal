@@ -10,7 +10,9 @@ public:
     void AgregarObjeto(Objeto * _Item);
     void MostrarInventario();
     void CerrarInventario();
+    void DibujarInventario();
 private:
+    bool On=false;
     QMap<int, Objeto*> Objetos;
 
     int Max_Stack=10;//Maxima cantidad de objetos y montones

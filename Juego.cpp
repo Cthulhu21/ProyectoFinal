@@ -68,6 +68,7 @@ void Juego::MenuInicial()
     BYPos = 450;
     Salir->setPos(BXPos, BYPos);
     Pantalla->addItem(Salir);
+    connect(Salir, SIGNAL(clicked()), this, SLOT(Cerrar()));
 }
 
 void Juego::CambiarMapaActual(Mapa _MapaACambiar)
@@ -84,6 +85,10 @@ void Juego::MenuPausa()
         for(int i=0; i<EnemigosActuales.size(); i++)
         {
             EnemigosActuales[i]->Pausar();
+        }
+        for(auto Elemento: ObjetosSuelo)
+        {
+            Elemento->setOpacity(0.5);
         }
 
         int BXPos = this->width()/2 - Continuar->boundingRect().width()/2;
@@ -123,6 +128,10 @@ void Juego::CerrarMenuPausa()
     {
         EnemigosActuales[i]->Despausar();
     }
+    for(auto Elemento: ObjetosSuelo)
+    {
+        Elemento->setOpacity(1);
+    }
     QList<QGraphicsItem*> Items=Pantalla->items();
     int i=0;
     for(auto Elemento : Items)
@@ -137,6 +146,11 @@ void Juego::CerrarMenuPausa()
             break;
         }
     }
+}
+
+void Juego::Cerrar()
+{
+    exit(0);
 }
 
 void Juego::CargarMapas()

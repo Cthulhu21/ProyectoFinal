@@ -13,7 +13,7 @@
 //Será útil para cambios de sprites de movimiento con switch
 enum Tecla {Derecha, Izquierda, Arriba, Abajo,
             D_Derecha, A_Izquierda, W_Arriba, S_Abajo, Espacio,
-            Esc,
+            Esc, I,
             NULA};
 
 //Enumerar primer o segundo jugador

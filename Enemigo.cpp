@@ -158,8 +158,18 @@ void Enemigo::EstadoActual()
             Drop->PosX=(x()+Slime[FrameMovimiento].width())/2;
             Drop->PosY=(y()+Slime[FrameMovimiento].height())/2;
             Game->AgregarDrop(Drop);
+            Game->ObjetosSuelo.push_back(Drop);
         }
         Game->Pantalla->removeItem(this);
+        auto Comiezo=Game->EnemigosActuales.begin();
+        for(auto Enemy: Game->EnemigosActuales)
+        {
+            if(Enemy==this)
+            {
+                Game->EnemigosActuales.erase(Comiezo);
+            }
+            Comiezo++;
+        }
         delete this;
     }
 }
