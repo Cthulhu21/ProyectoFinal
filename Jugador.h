@@ -52,12 +52,13 @@ private:
     QTimer *Animacion = new QTimer;
     QTimer *Delta = new QTimer;
 
-    //Funciones
+    //Metodos
     void Ataque();
     void Mover();
+    void Colisiones();
 
 
-    //Funcion que retorna una lista de QPixmap que dependerá
+    //Metodo que retorna una lista de QPixmap que dependerá
     //de la dirección del objeto
     QList<QPixmap> CargarMovimiento();
 

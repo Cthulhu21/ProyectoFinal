@@ -16,9 +16,11 @@ public:
     int PosX, PosY;
     int Cantidad=1;
     int ID;
+    QTimer *Evento;
 
     //Metodos
     void MostrarEnMapa();
+public slots:
     void Recoger();
 };
 

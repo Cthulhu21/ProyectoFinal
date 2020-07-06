@@ -215,12 +215,11 @@ void Jugador::AgregarAInventario(Objeto *_Objeto)
     //Agrega un Objeto al inventario del jugador
     //Y quita el objeto del suelo
     InventarioJugadores.AgregarObjeto(_Objeto);
-    Game->Pantalla->removeItem(_Objeto);
-    delete _Objeto;
 }
 
 void Jugador::Actualizar()
 {
+    Colisiones();
     if(Vida<=0)
     {
         //Se retorna al primer mapa
@@ -317,6 +316,11 @@ void Jugador::Mover()
     default:
         break;
     }
+}
+
+void Jugador::Colisiones()
+{
+    QList<QGraphicsItem*> Objetos=collidingItems();
 }
 
 void Jugador::keyPressEvent(QKeyEvent *event)

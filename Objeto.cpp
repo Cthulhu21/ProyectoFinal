@@ -1,17 +1,22 @@
 #include "Objeto.h"
 #include "Jugador.h"
 
+extern Juego *Game;
 extern Jugador *Jugador1 ;
 
-Objeto::Objeto(int ID, QGraphicsItem *parent)
+Objeto::Objeto(int _ID, QGraphicsItem *parent)
 {
     Imagen=QPixmap(":/Objetos/CharcoRosa").scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio);
+    ID=_ID;
 }
 
 void Objeto::MostrarEnMapa()
 {
     setPixmap(Imagen);
     setPos(PosX, PosY);
+    Evento= new QTimer;
+    connect(Evento, SIGNAL(timeout()), this, SLOT(Recoger()));
+    Evento->start(1);
 }
 
 void Objeto::Recoger()
@@ -22,6 +27,8 @@ void Objeto::Recoger()
         if(typeid(Circundantes[i])==typeid (Jugador))
         {
             Jugador1->AgregarAInventario(this);
+            Game->Pantalla->removeItem(this);
+            delete this;
         }
     }
 }
