@@ -28,6 +28,16 @@ void Objeto::Recoger()
         {
             Jugador1->AgregarAInventario(this);
             Game->Pantalla->removeItem(this);
+            auto Inicio=Game->ObjetosSuelo.begin();
+            for(auto Elemento: Game->ObjetosSuelo)
+            {
+                if(Elemento==this)
+                {
+                    Game->ObjetosSuelo.erase(Inicio);
+                    break;
+                }
+                Inicio++;
+            }
             delete this;
         }
     }

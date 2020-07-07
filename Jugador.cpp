@@ -347,6 +347,7 @@ void Jugador::keyPressEvent(QKeyEvent *event)
         break;
     case I:
         InventarioJugadores.MostrarInventario();
+        break;
     default:
         break;
     }
@@ -618,6 +619,7 @@ Tecla Jugador::TeclaPresionada(QKeyEvent *event)
         case Qt::Key_I:
             Presionada=I;
             Direccion=_Direccion;
+            break;
         default:
             Direccion=_Direccion;
             break;

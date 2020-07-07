@@ -78,37 +78,41 @@ void Juego::CambiarMapaActual(Mapa _MapaACambiar)
 
 void Juego::MenuPausa()
 {
-    if(JuegoActivo)
+    //Se verifica que las condiciones para pausar sean correctas
+    if(!Jugador1->InventarioJugadores.On)
     {
-        JuegoActivo=false;
-        Jugador1->Pausar();
-        for(int i=0; i<EnemigosActuales.size(); i++)
+        if(JuegoActivo)
         {
-            EnemigosActuales[i]->Pausar();
+            JuegoActivo=false;
+            Jugador1->Pausar();
+            for(int i=0; i<EnemigosActuales.size(); i++)
+            {
+                EnemigosActuales[i]->Pausar();
+            }
+            for(auto Elemento: ObjetosSuelo)
+            {
+                Elemento->setOpacity(0.5);
+            }
+
+            int BXPos = this->width()/2 - Continuar->boundingRect().width()/2;
+            Continuar->setPos(BXPos, 150);
+            Pantalla->addItem(Continuar);
+            connect(Continuar,SIGNAL(clicked()),this,SLOT(CerrarMenuPausa()));
+
+            Guardar->setPos(BXPos, 250);
+            Pantalla->addItem(Guardar);
+
+            Cargar->setPos(BXPos, 350);
+            Pantalla->addItem(Cargar);
+
+            Salir->setPos(BXPos, 450);
+            Pantalla->addItem(Salir);
         }
-        for(auto Elemento: ObjetosSuelo)
+        else
         {
-            Elemento->setOpacity(0.5);
+            JuegoActivo=true;
+            CerrarMenuPausa();
         }
-
-        int BXPos = this->width()/2 - Continuar->boundingRect().width()/2;
-        Continuar->setPos(BXPos, 150);
-        Pantalla->addItem(Continuar);
-        connect(Continuar,SIGNAL(clicked()),this,SLOT(CerrarMenuPausa()));
-
-        Guardar->setPos(BXPos, 250);
-        Pantalla->addItem(Guardar);
-
-        Cargar->setPos(BXPos, 350);
-        Pantalla->addItem(Cargar);
-
-        Salir->setPos(BXPos, 450);
-        Pantalla->addItem(Salir);
-    }
-    else
-    {
-        JuegoActivo=true;
-        CerrarMenuPausa();
     }
 }
 

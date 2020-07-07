@@ -153,6 +153,7 @@ void Enemigo::EstadoActual()
 
     if(Vida<=0)
     {
+        srand(time(NULL));
         if((rand()%3)+1==3)
         {
             Drop->PosX=(x()+Slime[FrameMovimiento].width())/2;

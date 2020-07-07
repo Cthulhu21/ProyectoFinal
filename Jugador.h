@@ -43,6 +43,8 @@ public:
     int Defensa=10;
     int Vida=10;
 
+    Inventario InventarioJugadores;
+
 private:
 
     //Timers para : Mover al jugador, ejecutar el ataque, etc
@@ -77,7 +79,6 @@ private:
     Tecla Direccion=Abajo;
     Tecla _Direccion=Abajo;
 
-    Inventario InventarioJugadores;
     // Primer o segundo jugador
 
     NumeroJugador Numero;
