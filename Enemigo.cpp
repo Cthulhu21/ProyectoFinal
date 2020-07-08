@@ -150,14 +150,19 @@ void Enemigo::EstadoActual()
             }
         }
     }
-
     if(Vida<=0)
     {
         srand(time(NULL));
-        if((rand()%3)+1==3)
+        //if((rand()%3)+1==3)
         {
-            Drop->PosX=(x()+Slime[FrameMovimiento].width())/2;
-            Drop->PosY=(y()+Slime[FrameMovimiento].height())/2;
+            //Drop->PosX=(x()+Slime[FrameMovimiento].width())/2;
+            //Drop->PosY=(y()+Slime[FrameMovimiento].height())/2;
+            Drop->PosX=1000;
+            Drop->PosY=500;
+            Objeto *A= new Objeto(2);
+            A->PosX=500;
+            A->PosY=500;
+            Game->AgregarDrop(A);
             Game->AgregarDrop(Drop);
             Game->ObjetosSuelo.push_back(Drop);
         }

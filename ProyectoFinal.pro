@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Boton.cpp \
+    Casilla.cpp \
     Enemigo.cpp \
     EntidadDinamica.cpp \
     Inventario.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
 
 HEADERS += \
     Boton.h \
+    Casilla.h \
     Enemigo.h \
     EntidadDinamica.h \
     Inventario.h \

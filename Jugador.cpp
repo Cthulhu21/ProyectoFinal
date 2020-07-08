@@ -40,11 +40,11 @@ void Jugador::CargarSprites()
     {
         std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Iz";
         _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
+        QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
+        /*for(auto Letra : _DireccionArchivo)
         {
             DireccionArchivo+=Letra;
-        }
+        }*/
         ParadoDerecha.push_back(QPixmap(DireccionArchivo).transformed(QTransform().scale(-1,1)));
     }
     //Parado Izquierda

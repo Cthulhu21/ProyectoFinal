@@ -6,7 +6,9 @@ extern Jugador *Jugador1 ;
 
 Objeto::Objeto(int _ID, QGraphicsItem *parent)
 {
-    Imagen=QPixmap(":/Objetos/CharcoRosa").scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio);
+    std::string _Direccion=":/Objetos/"+std::to_string(_ID);
+    QString Direccion=QString::fromStdString(_Direccion);
+    Imagen=QPixmap(Direccion).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio);
     ID=_ID;
 }
 

@@ -183,9 +183,5 @@ void Juego::Animacion()
     EnemigosActuales.push_back(Slime2);
     EnemigosActuales.push_back(Slime3);
 
-    Pantalla->addItem(Slime1);
-    Pantalla->addItem(Slime2);
-    Pantalla->addItem(Slime3);
-
     Pantalla->addItem(Jugador1);
 }

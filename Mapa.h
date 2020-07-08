@@ -11,7 +11,7 @@ class Mapa: public QBrush
 {
 public:
 
-    Mapa(int _ID=0, QImage *_Fondo= new QImage(""));
+    Mapa(int _ID=0, QImage *_Fondo= new QImage);
 
     QBrush ConseguirFondo();
     QList<QPair<QGraphicsPixmapItem *, QPoint> > ConseguirObjetos();

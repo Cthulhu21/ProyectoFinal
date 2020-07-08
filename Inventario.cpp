@@ -1,6 +1,6 @@
 #include "Inventario.h"
 #include "Jugador.h"
-
+#include "Casilla.h"
 
 extern Jugador *Jugador1;
 extern Juego *Game;
@@ -80,28 +80,39 @@ void Inventario::DibujarInventario(bool _On)
         Game->Pantalla->addItem(Titulo);
 
         //Casillas del inventario
-        for(int i=0; i<Jugador1->InventarioJugadores.Objetos.size();i++)
+        int i=0;
+        auto Inicio=Objetos.begin();
+        for(auto Elemento: Objetos)
+        {
+            Casilla *_Casilla= new Casilla(200,(i+1)*200,100,100,Inicio.key());
+            QString _Numero=QString::fromStdString(std::to_string(Elemento));
+            QGraphicsTextItem *Numero= new QGraphicsTextItem(_Numero);
+            Numero->setFont(QFont("Times",10));
+            Numero->setPos(500,(i+1)*210);
+            Game->Pantalla->addItem(Numero);
+            //
+            Game->Pantalla->addItem(_Casilla);
+
+            Casillas.push_back(_Casilla);
+            Numeros.push_back(Numero);
+            i++;
+            Inicio++;
+        }
+        /*for(int i=0; i<Objetos.size();i++)
         {
             //Prueba de texto
-            auto A=Jugador1->InventarioJugadores.Objetos[i];
-            if(A>0)
+            Objetos.find();
+            if(Objetos[i]>0)
             {
-                QString _Numero;
-                for(auto Letra:std::to_string(A))
-                {
-                    _Numero+=Letra;
-                }
+                Casilla *_Casilla= new Casilla(200,(i+1)*200,100,100,Jugador1->InventarioJugadores.Objetos[i]);
+                QString _Numero=QString::fromStdString(std::to_string(Objetos[i]));
                 QGraphicsTextItem *Numero= new QGraphicsTextItem(_Numero);
                 Numero->setFont(QFont("Times",10));
                 Numero->setPos(210,(i+1)*210);
                 Game->Pantalla->addItem(Numero);
                 //
-                Casilla= new QGraphicsRectItem;
-                Casilla->setRect(200,(i+1)*200,100,100);
-                Game->Pantalla->addItem(Casilla);
-                Casillas.push_back(Casilla);
-            }
-        }
+                Game->Pantalla->addItem(_Casilla);
+            }*/
     }
     else
     {
@@ -109,10 +120,17 @@ void Inventario::DibujarInventario(bool _On)
         delete Fondo;
         Game->Pantalla->removeItem(Titulo);
         delete Titulo;
+        auto InicioNumeros=Numeros.begin();
         for(auto _Casilla    :   Casillas)
         {
+
             Game->Pantalla->removeItem(_Casilla);
             delete _Casilla;
+            Game->Pantalla->removeItem(*InicioNumeros);
+            delete  *InicioNumeros;
+            InicioNumeros++;
         }
+        Casillas.clear();
+        Numeros.clear();
     }
 }

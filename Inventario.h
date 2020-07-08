@@ -4,6 +4,7 @@
 #include "Objeto.h"
 #include <QGraphicsRectItem>
 #include <QGraphicsTextItem>
+#include "Casilla.h"
 
 class Inventario
 {
@@ -18,12 +19,11 @@ public:
 private:
 
     QMap<int, int> Objetos; //<ID,Cantidad>
-
+    QList<Casilla*> Casillas;
+    QList<QGraphicsTextItem*> Numeros;
     int Max_Stack=10;//Maxima cantidad de objetos y montones
     QGraphicsRectItem *Fondo;
     QGraphicsTextItem *Titulo;
-    QGraphicsRectItem *Casilla;
-    QList<QGraphicsItem*> Casillas;
 };
 
 #endif // INVENTARIO_H
