@@ -3,7 +3,6 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
-#include <QGraphicsItemAnimation>
 #include <Mapa.h>
 #include <Boton.h>
 #include <QKeyEvent>
@@ -19,7 +18,6 @@ public:
 
     //Atributos públicos
     bool JuegoActivo=false;
-    bool JuegoStart=false;
     QGraphicsScene *Pantalla;
     QList<Enemigo*> EnemigosActuales;
     QList<Objeto*> ObjetosSuelo;

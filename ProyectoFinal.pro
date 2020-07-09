@@ -19,7 +19,6 @@ SOURCES += \
     Boton.cpp \
     Casilla.cpp \
     Enemigo.cpp \
-    EntidadDinamica.cpp \
     Inventario.cpp \
     Juego.cpp \
     Jugador.cpp \
@@ -32,7 +31,6 @@ HEADERS += \
     Boton.h \
     Casilla.h \
     Enemigo.h \
-    EntidadDinamica.h \
     Inventario.h \
     Juego.h \
     Jugador.h \

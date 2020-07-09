@@ -128,7 +128,6 @@ void Juego::AgregarDrop(Objeto *_Drop)
 void Juego::CerrarMenuPausa()
 {
     //Se eliminan los botones del escenario
-    JuegoActivo=true;
     Jugador1->Despausar();
     for(int i =0; i<EnemigosActuales.size(); i++)
     {
@@ -170,7 +169,6 @@ void Juego::CargarMapas()
 void Juego::Animacion()
 {
     //
-    JuegoStart=true;
     JuegoActivo=true;
 
     Pantalla->clear();
