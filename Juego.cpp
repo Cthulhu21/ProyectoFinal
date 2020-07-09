@@ -5,6 +5,8 @@
 #include <QTimeLine>
 #include <windows.h>
 #include "Enemigo.h"
+#include <NPC.h>
+
 
 Jugador *Jugador1;
 Jugador *Jugador2;
@@ -173,15 +175,17 @@ void Juego::Animacion()
 
     Pantalla->clear();
 
-    Jugador1= new Jugador(Primero, 0, 0);
+    Jugador1= new Jugador(Primero, 500, 500);
     Jugador1->setFlag(QGraphicsItem::ItemIsFocusable);
     Jugador1->setFocus();
 
-    Enemigo *Slime1= new Enemigo(100,100), *Slime2 = new Enemigo(200,200), *Slime3= new Enemigo(300,300);
+    NPC *Heroina= new NPC(1,500,500);
+    Pantalla->addItem(Heroina);
+   /*Enemigo *Slime1= new Enemigo(100,100), *Slime2 = new Enemigo(200,200), *Slime3= new Enemigo(300,300);
 
     EnemigosActuales.push_back(Slime1);
     EnemigosActuales.push_back(Slime2);
-    EnemigosActuales.push_back(Slime3);
+    EnemigosActuales.push_back(Slime3);*/
 
     Pantalla->addItem(Jugador1);
 }

@@ -58,6 +58,7 @@ private:
     void Ataque();
     void Mover();
     void Colisiones();
+    void Reposicionar();
 
 
     //Metodo que retorna una lista de QPixmap que dependerá
@@ -85,6 +86,7 @@ private:
 
     //Varios usos
 
+    bool Chocando=false;
 
     //Mover el frame
 

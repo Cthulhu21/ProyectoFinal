@@ -1,6 +1,7 @@
 #include "Jugador.h"
 #include <math.h>
 #include "Enemigo.h"
+#include "NPC.h"
 
 extern Jugador *Jugador1, *Jugador2;
 extern Juego *Game;
@@ -227,7 +228,7 @@ void Jugador::Actualizar()
     else
     {
         // Se actualizan los datos de posicion y velocidad
-
+        int _X=PosX, _Y=PosY;
         VectorVelocidad = sqrt((pow(VelocidadX,2)+pow(VelocidadY,2)));
         Angulo = atan2(VelocidadY,VelocidadX);
 
@@ -258,8 +259,34 @@ void Jugador::Actualizar()
                 VelocidadY=0;
             }
         }
-
         setPos(PosX, PosY);
+        Colisiones();
+        if(Chocando)
+        {
+            switch (Direccion)
+            {
+            case Derecha:
+                setX(_X-3);
+                PosX=_X-3, PosY=_Y;
+                break;
+            case Izquierda:
+                setX(_X+3);
+                PosX=_X+3, PosY=_Y;
+                break;
+            case Arriba:
+                setY(_Y+3);
+                PosX=_X, PosY=_Y+3;
+                break;
+            case Abajo:
+                setY(_Y-3);
+                PosX=_X, PosY=_Y-3;
+                break;
+            default:
+                break;
+            }
+
+            Chocando=false;
+        }
     }
 }
 
@@ -320,7 +347,25 @@ void Jugador::Mover()
 
 void Jugador::Colisiones()
 {
-    QList<QGraphicsItem*> Objetos=collidingItems();
+    QList<QGraphicsItem*> Elementos=collidingItems();
+    for(auto Elemento: Elementos)
+    {
+        if(typeid (*Elemento)==typeid (NPC))
+        {
+            Chocando=true;
+        }
+    }
+}
+
+void Jugador::Reposicionar()
+{
+    switch (Direccion)
+    {
+    case Derecha:
+        setX(x()-10);
+    default:
+        break;
+    }
 }
 
 void Jugador::keyPressEvent(QKeyEvent *event)
@@ -570,7 +615,6 @@ void Jugador::Movimiento()
     if(!Atacando)
     {
         Estatico=(VelocidadX==0 and VelocidadY==0)? true: false;
-
         EjecutarMovimientos();
     }
     else

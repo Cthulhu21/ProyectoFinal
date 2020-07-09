@@ -391,4 +391,7 @@
         <file alias="1">Recursos/Enemigos/Slime/Slime.png</file>
         <file alias="2">Recursos/Enemigos/Slime/Slime - copia.png</file>
     </qresource>
+    <qresource prefix="/NPCs">
+        <file alias="1">Recursos/NPCs/Hero_Strong_Female_01_idle_down.png</file>
+    </qresource>
 </RCC>
