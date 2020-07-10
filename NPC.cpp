@@ -14,6 +14,8 @@ NPC::NPC(int _ID, int _X, int _Y)
     QTimer *Busqueda= new QTimer;
     connect(Busqueda,SIGNAL(timeout()),this, SLOT(Hablar()));
     Busqueda->start(1);
+
+    Estatico=false;
 }
 
 void NPC::CargarImagen(int _ID)

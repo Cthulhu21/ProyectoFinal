@@ -43,6 +43,7 @@ private:
     QList<Mapa> Mapas;
     Mapa MapaActual;
     void CargarMapas();
+    QMap<int, Mapa> Ma_Pas;
 
 public slots:
 

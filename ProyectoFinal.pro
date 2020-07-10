@@ -25,6 +25,7 @@ SOURCES += \
     Mapa.cpp \
     NPC.cpp \
     Objeto.cpp \
+    ObjetoDinamico.cpp \
     main.cpp
 
 HEADERS += \
@@ -36,7 +37,8 @@ HEADERS += \
     Jugador.h \
     Mapa.h \
     NPC.h \
-    Objeto.h
+    Objeto.h \
+    ObjetoDinamico.h
 
 TRANSLATIONS += \
     ProyectoFinal_es_CO.ts

@@ -2,6 +2,7 @@
 #include <math.h>
 #include "Enemigo.h"
 #include "NPC.h"
+#include "ObjetoDinamico.h"
 
 extern Jugador *Jugador1, *Jugador2;
 extern Juego *Game;
@@ -42,10 +43,6 @@ void Jugador::CargarSprites()
         std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Iz";
         _DireccionArchivo+=(std::to_string(i));
         QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
-        /*for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }*/
         ParadoDerecha.push_back(QPixmap(DireccionArchivo).transformed(QTransform().scale(-1,1)));
     }
     //Parado Izquierda
@@ -53,24 +50,15 @@ void Jugador::CargarSprites()
     {
         std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Iz";
         _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }
+        QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
         ParadoIzquierda.push_back(QPixmap(DireccionArchivo));
-        //Lista.push_back(QPixmap(DireccionArchivo).scaled(400,400,Qt::AspectRatioMode::KeepAspectRatio));
     }
     //Parado Arriba
     for(int i=1; i<11; i++)
     {
         std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Ar";
         _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }
+        QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
         ParadoArriba.push_back(QPixmap(DireccionArchivo));
     }
     //Parado Abajo
@@ -78,11 +66,7 @@ void Jugador::CargarSprites()
     {
         std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Ab";
         _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }
+        QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
         ParadoAbajo.push_back(QPixmap(DireccionArchivo));
     }
     //Correr Derecha
@@ -90,11 +74,7 @@ void Jugador::CargarSprites()
     {
         std::string _DireccionArchivo=":/PersonajePrincipal/Correr_Iz";
         _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }
+        QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
         CorrerDerecha.push_back(QPixmap(DireccionArchivo).transformed(QTransform().scale(-1,1)));
     }
     //Correr Izquierda
@@ -102,11 +82,7 @@ void Jugador::CargarSprites()
     {
         std::string _DireccionArchivo=":/PersonajePrincipal/Correr_Iz";
         _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }
+        QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
         CorrerIzquierda.push_back(QPixmap(DireccionArchivo));
     }
     //Correr Arriba
@@ -114,11 +90,7 @@ void Jugador::CargarSprites()
     {
         std::string _DireccionArchivo=":/PersonajePrincipal/Correr_Arr";
         _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }
+        QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
         CorrerArriba.push_back(QPixmap(DireccionArchivo));
     }
     //Correr Abajo
@@ -126,11 +98,7 @@ void Jugador::CargarSprites()
     {
         std::string _DireccionArchivo=":/PersonajePrincipal/Correr_Ab";
         _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }
+        QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
         CorrerAbajo.push_back(QPixmap(DireccionArchivo));
     }
     //Ataque Derecha
@@ -138,11 +106,7 @@ void Jugador::CargarSprites()
     {
         std::string _DireccionArchivo=":/PersonajePrincipal/A_Iz";
         _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }
+        QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
         AtacarDerecha.push_back(QPixmap(DireccionArchivo).transformed(QTransform().scale(-1,1)));
     }
     //Atacar Izquierda
@@ -150,11 +114,7 @@ void Jugador::CargarSprites()
     {
         std::string _DireccionArchivo=":/PersonajePrincipal/A_Iz";
         _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }
+        QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
         AtacarIzquierda.push_back(QPixmap(DireccionArchivo));
     }
     //Ataque Arriba
@@ -162,24 +122,15 @@ void Jugador::CargarSprites()
     {
         std::string _DireccionArchivo=":/PersonajePrincipal/A_Ar";
         _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }
+        QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
         AtacarArriba.push_back(QPixmap(DireccionArchivo));
-        //Lista.push_back(QPixmap(DireccionArchivo).scaled(650,650,Qt::AspectRatioMode::KeepAspectRatio));
     }
     //Ataque Abajo
     for(int i=1; i<43; i++)
     {
         std::string _DireccionArchivo=":/PersonajePrincipal/A_Ab";
         _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }
+        QString DireccionArchivo=QString::fromStdString(_DireccionArchivo);
         AtacarAbajo.push_back(QPixmap(DireccionArchivo));
     }
 }
@@ -193,7 +144,6 @@ void Jugador::Pausar()
 
 void Jugador::Despausar()
 {
-    //Jugador1->setFlag(QGraphicsItem::ItemIsFocusable);
     Jugador1->setFocus();
     setOpacity(1);
     Delta->start(1);
@@ -220,7 +170,6 @@ void Jugador::AgregarAInventario(Objeto *_Objeto)
 
 void Jugador::Actualizar()
 {
-    Colisiones();
     if(Vida<=0)
     {
         //Se retorna al primer mapa
@@ -228,12 +177,9 @@ void Jugador::Actualizar()
     else
     {
         // Se actualizan los datos de posicion y velocidad
-        int _X=PosX, _Y=PosY;
+        float _X=PosX, _Y=PosY;
         VectorVelocidad = sqrt((pow(VelocidadX,2)+pow(VelocidadY,2)));
         Angulo = atan2(VelocidadY,VelocidadX);
-
-        AceleracionX = (ResistenciaAire*pow(VectorVelocidad,2))*-cos(Angulo);
-        AceleracionY = (ResistenciaAire*pow(VectorVelocidad,2))*-sin(Angulo);
 
         PosX = PosX + VelocidadX*DeltaTiempo + ((AceleracionX*pow(DeltaTiempo,2))/2);
         PosY = PosY + VelocidadY*DeltaTiempo + ((AceleracionY*pow(DeltaTiempo,2))/2);
@@ -241,12 +187,13 @@ void Jugador::Actualizar()
         VelocidadX = VelocidadX + AceleracionX*DeltaTiempo;
         VelocidadY = VelocidadY + AceleracionY*DeltaTiempo;
 
-
+        AceleracionX = (ResistenciaAire*pow(VectorVelocidad,2))*-cos(Angulo);
+        AceleracionY = (ResistenciaAire*pow(VectorVelocidad,2))*-sin(Angulo);
 
         // Se verifica que no se salga del mapa; si lo hace, se toma como choque -> Velocidad 0
 
-        PosX=(PosX<0)? 0: PosX;
-        PosY=(PosY<0)? 0: PosY;
+        //PosX=(PosX<0)? 0: PosX;
+        //PosY=(PosY<0)? 0: PosY;
         // Determina velocidad mínima
         {
             float VelocidadMinima=5;
@@ -354,19 +301,17 @@ void Jugador::Colisiones()
         {
             Chocando=true;
         }
+        else if(typeid (*Elemento)==typeid (ObjetoDinamico))
+        {
+            //Chocando=true;
+        }
+        else if(typeid(*Elemento)==typeid(QGraphicsPixmapItem))
+        {
+            Chocando=true;
+        }
     }
 }
 
-void Jugador::Reposicionar()
-{
-    switch (Direccion)
-    {
-    case Derecha:
-        setX(x()-10);
-    default:
-        break;
-    }
-}
 
 void Jugador::keyPressEvent(QKeyEvent *event)
 {
@@ -406,208 +351,6 @@ void Jugador::Velocidad(float _VelocidadX, float _VelocidadY, float _Aceleracion
     VelocidadY+=_VelocidadY;
     AceleracionX+=_AceleracionX;
     AceleracionY+=_AceleracionY;
-}
-
-QList<QPixmap> Jugador::CargarMovimiento()
-{
-    QList<QPixmap> Lista;
-    if(Atacando)
-    {
-        switch (Direccion)
-        {
-        case Abajo:
-            for(int i=1; i<43; i++)
-            {
-                std::string _DireccionArchivo=":/PersonajePrincipal/A_Ab";
-                _DireccionArchivo+=(std::to_string(i));
-                QString DireccionArchivo;
-                for(auto Letra : _DireccionArchivo)
-                {
-                    DireccionArchivo+=Letra;
-                }
-                Lista.push_back(QPixmap(DireccionArchivo));
-                //Lista.push_back(QPixmap(DireccionArchivo).scaled(650,650,Qt::AspectRatioMode::KeepAspectRatio));
-            }
-            break;
-        case Izquierda:
-            for(int i=1; i<43; i++)
-            {
-                std::string _DireccionArchivo=":/PersonajePrincipal/A_Iz";
-                _DireccionArchivo+=(std::to_string(i));
-                QString DireccionArchivo;
-                for(auto Letra : _DireccionArchivo)
-                {
-                    DireccionArchivo+=Letra;
-                }
-                Lista.push_back(QPixmap(DireccionArchivo));
-                //Lista.push_back(QPixmap(DireccionArchivo).scaled(650,650,Qt::AspectRatioMode::KeepAspectRatio));
-            }
-            break;
-        case Arriba:
-            for(int i=1; i<43; i++)
-            {
-                std::string _DireccionArchivo=":/PersonajePrincipal/A_Ar";
-                _DireccionArchivo+=(std::to_string(i));
-                QString DireccionArchivo;
-                for(auto Letra : _DireccionArchivo)
-                {
-                    DireccionArchivo+=Letra;
-                }
-                Lista.push_back(QPixmap(DireccionArchivo));
-                //Lista.push_back(QPixmap(DireccionArchivo).scaled(650,650,Qt::AspectRatioMode::KeepAspectRatio));
-            }
-            break;
-        case Derecha:
-            for(int i=1; i<43; i++)
-            {
-                std::string _DireccionArchivo=":/PersonajePrincipal/A_Iz";
-                _DireccionArchivo+=(std::to_string(i));
-                QString DireccionArchivo;
-                for(auto Letra : _DireccionArchivo)
-                {
-                    DireccionArchivo+=Letra;
-                }
-                Lista.push_back(QPixmap(DireccionArchivo).transformed(QTransform().scale(-1,1)));
-                //Lista.push_back(QPixmap(DireccionArchivo).scaled(650,650,Qt::AspectRatioMode::KeepAspectRatio));
-            }
-            break;
-        default:
-            break;
-        }
-        return  Lista;
-    }
-    else
-    {
-        if(Estatico)
-        {
-            switch (Direccion)
-            {
-            case Derecha:
-                for(int i=1; i<11; i++)
-                {
-                    std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Iz";
-                    _DireccionArchivo+=(std::to_string(i));
-                    QString DireccionArchivo;
-                    for(auto Letra : _DireccionArchivo)
-                    {
-                        DireccionArchivo+=Letra;
-                    }
-                    Lista.push_back(QPixmap(DireccionArchivo).transformed(QTransform().scale(-1,1)));
-                    //Lista.push_back(QPixmap(DireccionArchivo).scaled(400,400,Qt::AspectRatioMode::KeepAspectRatio).transformed(QTransform().scale(-1,1)));
-                }
-                break;
-            case Arriba:
-                for(int i=1; i<11; i++)
-                {
-                    std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Ar";
-                    _DireccionArchivo+=(std::to_string(i));
-                    QString DireccionArchivo;
-                    for(auto Letra : _DireccionArchivo)
-                    {
-                        DireccionArchivo+=Letra;
-                    }
-                    Lista.push_back(QPixmap(DireccionArchivo));
-                    //Lista.push_back(QPixmap(DireccionArchivo).scaled(400,400,Qt::AspectRatioMode::KeepAspectRatio));
-                }
-                break;
-            case Abajo:
-                for(int i=1; i<11; i++)
-                {
-                    std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Ab";
-                    _DireccionArchivo+=(std::to_string(i));
-                    QString DireccionArchivo;
-                    for(auto Letra : _DireccionArchivo)
-                    {
-                        DireccionArchivo+=Letra;
-                    }
-                    Lista.push_back(QPixmap(DireccionArchivo));
-                    //Lista.push_back(QPixmap(DireccionArchivo).scaled(400,400,Qt::AspectRatioMode::KeepAspectRatio));
-                }
-                break;
-            case Izquierda:
-                for(int i=1; i<11; i++)
-                {
-                    std::string _DireccionArchivo=":/PersonajePrincipal/Esta_Iz";
-                    _DireccionArchivo+=(std::to_string(i));
-                    QString DireccionArchivo;
-                    for(auto Letra : _DireccionArchivo)
-                    {
-                        DireccionArchivo+=Letra;
-                    }
-                    Lista.push_back(QPixmap(DireccionArchivo));
-                    //Lista.push_back(QPixmap(DireccionArchivo).scaled(400,400,Qt::AspectRatioMode::KeepAspectRatio));
-                }
-                break;
-            default:
-                break;
-            }
-        }
-        else
-        {
-            switch (Direccion)
-            {
-            case Derecha:
-                for(int i=1; i<9; i++)
-                {
-                    std::string _DireccionArchivo=":/PersonajePrincipal/Correr_Iz";
-                    _DireccionArchivo+=(std::to_string(i));
-                    QString DireccionArchivo;
-                    for(auto Letra : _DireccionArchivo)
-                    {
-                        DireccionArchivo+=Letra;
-                    }
-                    Lista.push_back(QPixmap(DireccionArchivo).transformed(QTransform().scale(-1,1)));
-                    //Lista.push_back(QPixmap(DireccionArchivo).transformed(QTransform().scale(-1,1)).scaled(400,400,Qt::AspectRatioMode::KeepAspectRatio));
-                }
-                break;
-            case Izquierda:
-                for(int i=1; i<9; i++)
-                {
-                    std::string _DireccionArchivo=":/PersonajePrincipal/Correr_Iz";
-                    _DireccionArchivo+=(std::to_string(i));
-                    QString DireccionArchivo;
-                    for(auto Letra : _DireccionArchivo)
-                    {
-                        DireccionArchivo+=Letra;
-                    }
-                    Lista.push_back(QPixmap(DireccionArchivo));
-                    //Lista.push_back(QPixmap(DireccionArchivo).scaled(400,400,Qt::AspectRatioMode::KeepAspectRatio));
-                }
-                break;
-            case Arriba:
-                for(int i=1; i<9; i++)
-                {
-                    std::string _DireccionArchivo=":/PersonajePrincipal/Correr_Arr";
-                    _DireccionArchivo+=(std::to_string(i));
-                    QString DireccionArchivo;
-                    for(auto Letra : _DireccionArchivo)
-                    {
-                        DireccionArchivo+=Letra;
-                    }
-                    Lista.push_back(QPixmap(DireccionArchivo));
-                    //Lista.push_back(QPixmap(DireccionArchivo).scaled(400,400,Qt::AspectRatioMode::KeepAspectRatio));
-                }
-                break;
-            case Abajo:
-                for(int i=1; i<9; i++)
-                {
-                    std::string _DireccionArchivo=":/PersonajePrincipal/Correr_Ab";
-                    _DireccionArchivo+=(std::to_string(i));
-                    QString DireccionArchivo;
-                    for(auto Letra : _DireccionArchivo)
-                    {
-                        DireccionArchivo+=Letra;
-                    }
-                    Lista.push_back(QPixmap(DireccionArchivo));
-                    //Lista.push_back(QPixmap(DireccionArchivo).scaled(400,400,Qt::AspectRatioMode::KeepAspectRatio));
-                }
-                break;
-            default:
-                break;
-            }
-        }
-    }
-    return Lista;
 }
 
 void Jugador::Movimiento()

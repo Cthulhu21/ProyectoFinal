@@ -10,10 +10,12 @@ class Inventario
 {
 public:
     Inventario();
+    // Métodos
     void AgregarObjeto(Objeto * _Item);
     void MostrarInventario();
     void CerrarInventario();
     void DibujarInventario(bool);
+    //Atributos
     bool On=false;
 
 private:

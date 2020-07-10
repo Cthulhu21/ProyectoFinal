@@ -8,6 +8,7 @@
 #include <Boton.h>
 #include <Juego.h>
 #include "Inventario.h"
+#include "ObjetoDinamico.h"
 
 //Una enumeracion de diferentes posibles teclas presionadas.
 //Será útil para cambios de sprites de movimiento con switch
@@ -43,6 +44,10 @@ public:
     int Defensa=10;
     int Vida=10;
 
+    bool Chocando=false;
+
+    Tecla Direccion=Abajo;
+
     Inventario InventarioJugadores;
 
 private:
@@ -77,7 +82,7 @@ private:
     float ResistenciaAire;
     float VectorVelocidad;
     float DeltaTiempo;
-    Tecla Direccion=Abajo;
+
     Tecla _Direccion=Abajo;
 
     // Primer o segundo jugador
@@ -86,7 +91,6 @@ private:
 
     //Varios usos
 
-    bool Chocando=false;
 
     //Mover el frame
 

@@ -373,6 +373,8 @@
     </qresource>
     <qresource prefix="/Mapas">
         <file alias="Fondo">Recursos/Mapas/Fondo.png</file>
+        <file alias="1F">Recursos/Mapas/Pueblo Fondo.png</file>
+        <file alias="1E">Recursos/Mapas/Pueblo Estructuras.png</file>
     </qresource>
     <qresource prefix="/Enemigos">
         <file alias="Slimes">Recursos/Enemigos/Slimes.png</file>
@@ -393,5 +395,8 @@
     </qresource>
     <qresource prefix="/NPCs">
         <file alias="1">Recursos/NPCs/Hero_Strong_Female_01_idle_down.png</file>
+    </qresource>
+    <qresource prefix="/Objeto">
+        <file alias="1">Recursos/Objetos/boss chest.png</file>
     </qresource>
 </RCC>

@@ -9,9 +9,12 @@ class NPC:public QObject,  public QGraphicsPixmapItem
 public:
     NPC(int _ID, int X, int Y);
     void CargarImagen(int _ID);
+    bool Estatico;
 private:
     QGraphicsTextItem *Texto;
     bool TextoEnPantalla=false;
+    void CargarDialogos();
+
 public slots:
     void Hablar();
 };

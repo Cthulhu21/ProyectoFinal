@@ -4,15 +4,17 @@
 
 extern Juego *Game;
 
-Mapa::Mapa(int _ID, QImage *_Fondo)
-{
-    ID=_ID;
-    FondoMapa=*_Fondo;
-}
 
 QList<QPair<QGraphicsPixmapItem *, QPoint> > Mapa::ConseguirObjetos()
 {
     return Objetos;
+}
+
+Mapa::Mapa(int _ID, QImage *_Fondo, QGraphicsPixmapItem *_Estructura)
+{
+    ID=_ID;
+    FondoMapa=*_Fondo;
+    Estructura=_Estructura;
 }
 
 QBrush Mapa::ConseguirFondo()
