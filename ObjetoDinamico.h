@@ -11,11 +11,14 @@ class ObjetoDinamico: public QObject, public QGraphicsPixmapItem
     Q_OBJECT
 public:
     ObjetoDinamico(float _PosX, float _PosY, int ID);
+    void Pausar();
+    void Despausar();
 private:
     //Metodos
 
-    void DarAceleracion(float X=0, float Y=0);
+    void DarVelocidad(float X=0, float Y=0);
     void Colisiones();
+    void ColisionJugador();
 
     //Atributos
     float PosX;

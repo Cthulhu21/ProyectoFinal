@@ -170,6 +170,8 @@ void Jugador::AgregarAInventario(Objeto *_Objeto)
 
 void Jugador::Actualizar()
 {
+    Jugador1->setFlag(QGraphicsItem::ItemIsFocusable);
+    Jugador1->setFocus();
     if(Vida<=0)
     {
         //Se retorna al primer mapa
@@ -177,7 +179,6 @@ void Jugador::Actualizar()
     else
     {
         // Se actualizan los datos de posicion y velocidad
-        float _X=PosX, _Y=PosY;
         VectorVelocidad = sqrt((pow(VelocidadX,2)+pow(VelocidadY,2)));
         Angulo = atan2(VelocidadY,VelocidadX);
 
@@ -208,32 +209,6 @@ void Jugador::Actualizar()
         }
         setPos(PosX, PosY);
         Colisiones();
-        if(Chocando)
-        {
-            switch (Direccion)
-            {
-            case Derecha:
-                setX(_X-3);
-                PosX=_X-3, PosY=_Y;
-                break;
-            case Izquierda:
-                setX(_X+3);
-                PosX=_X+3, PosY=_Y;
-                break;
-            case Arriba:
-                setY(_Y+3);
-                PosX=_X, PosY=_Y+3;
-                break;
-            case Abajo:
-                setY(_Y-3);
-                PosX=_X, PosY=_Y-3;
-                break;
-            default:
-                break;
-            }
-
-            Chocando=false;
-        }
     }
 }
 
@@ -297,21 +272,43 @@ void Jugador::Colisiones()
     QList<QGraphicsItem*> Elementos=collidingItems();
     for(auto Elemento: Elementos)
     {
-        if(typeid (*Elemento)==typeid (NPC))
+        if(typeid(*Elemento)==typeid (ObjetoDinamico))
         {
             Chocando=true;
         }
-        else if(typeid (*Elemento)==typeid (ObjetoDinamico))
+        else if((typeid (*Elemento)==typeid(NPC)) or
+                (typeid(*Elemento)==typeid (QGraphicsPixmapItem)) or
+                (typeid (*Elemento)==typeid(Enemigo)))
         {
-            //Chocando=true;
+            Rebote();
         }
-        else if(typeid(*Elemento)==typeid(QGraphicsPixmapItem))
-        {
-            Chocando=true;
-        }
+    }
+    if(Elementos.size()==0)
+    {
+        Chocando=false;
     }
 }
 
+void Jugador::Rebote()
+{
+    switch (Direccion)
+    {
+    case Derecha:
+        Velocidad(-10);
+        break;
+    case Izquierda:
+        Velocidad(10);
+        break;
+    case Arriba:
+        Velocidad(0,10);
+        break;
+    case Abajo:
+        Velocidad(0,-10);
+        break;
+    default:
+        break;
+    }
+}
 
 void Jugador::keyPressEvent(QKeyEvent *event)
 {
@@ -558,16 +555,6 @@ void Jugador::EjecutarAtaque()
         }
         else
         {
-            QList<QGraphicsItem *> Colision= collidingItems();
-            for(auto Elemento : Colision)
-            {
-                if(typeid (*Elemento)== typeid (Enemigo))
-                {
-                    int i=0;
-                    i++;
-                }
-            }
-            setPos(PosX-65, PosY-58);
             setPixmap(AtacarDerecha[FrameMovimiento++]);
         }
         break;
@@ -587,7 +574,7 @@ void Jugador::EjecutarAtaque()
         }
         else
         {
-            setPos(PosX-65, PosY-58);
+            //setPos(PosX-65, PosY-58);
             setPixmap(AtacarIzquierda[FrameMovimiento++]);
         }
         break;
@@ -607,7 +594,7 @@ void Jugador::EjecutarAtaque()
         }
         else
         {
-            setPos(PosX-65, PosY-58);
+            //setPos(PosX-65, PosY-58);
             setPixmap(AtacarArriba[FrameMovimiento++]);
         }
         break;
@@ -627,7 +614,7 @@ void Jugador::EjecutarAtaque()
         }
         else
         {
-            setPos(PosX-65, PosY-58);
+            //setPos(PosX-65, PosY-58);
             setPixmap(AtacarAbajo[FrameMovimiento++]);
         }
         break;

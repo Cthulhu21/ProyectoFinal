@@ -23,6 +23,15 @@ void NPC::CargarImagen(int _ID)
     setPixmap(QPixmap(":/NPCs/"+QString::fromStdString(std::to_string(_ID))));
 }
 
+void NPC::Pausar()
+{
+    setOpacity(0.5);
+}
+void NPC::Despausar()
+{
+    setOpacity(1);
+}
+
 void NPC::Hablar()
 {
     float A=(Jugador1->x()+64)-(x()+32);
@@ -31,7 +40,7 @@ void NPC::Hablar()
     {
         Texto= new QGraphicsTextItem("Hola aventurero");
         Texto->setFont(QFont("Times",10));
-        Texto->setPos(x()-10,y()-5);
+        Texto->setPos(x()-30,y()-20);
         Game->Pantalla->addItem(Texto);
         TextoEnPantalla=true;
     }

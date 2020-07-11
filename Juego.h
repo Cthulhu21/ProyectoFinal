@@ -8,6 +8,8 @@
 #include <QKeyEvent>
 #include "Enemigo.h"
 #include "Objeto.h"
+#include "ObjetoDinamico.h"
+#include "NPC.h"
 
 class Juego: public QGraphicsView
 {
@@ -20,7 +22,9 @@ public:
     bool JuegoActivo=false;
     QGraphicsScene *Pantalla;
     QList<Enemigo*> EnemigosActuales;
-    QList<Objeto*> ObjetosSuelo;
+    QList<Objeto*> DropSuelo;
+    QList<ObjetoDinamico*> ObjetosSuelo;
+    QList<NPC*> NPCs;
 
     //Metodos públicos
 
@@ -50,7 +54,6 @@ public slots:
     void Animacion();
     void CerrarMenuPausa();
     void Cerrar();
-
 };
 
 #endif // JUEGO_H

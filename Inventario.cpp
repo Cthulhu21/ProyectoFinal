@@ -40,9 +40,17 @@ void Inventario::MostrarInventario()
             {
                 _Enemigo->Pausar();
             }
-            for(auto Elemento: Game->ObjetosSuelo)
+            for(auto Elemento: Game->DropSuelo)
             {
                 Elemento->setOpacity(0.5);
+            }
+            for(auto Elemento : Game->ObjetosSuelo)
+            {
+                Elemento->Pausar();
+            }
+            for(auto _NPC: Game->NPCs)
+            {
+                _NPC->Pausar();
             }
             On=true;
         }
@@ -53,9 +61,17 @@ void Inventario::MostrarInventario()
             {
                 _Enemigo->Despausar();
             }
-            for(auto Elemento: Game->ObjetosSuelo)
+            for(auto Elemento: Game->DropSuelo)
             {
-                Elemento->setOpacity(1);
+                Elemento->setOpacity(0.5);
+            }
+            for(auto Elemento : Game->ObjetosSuelo)
+            {
+                Elemento->Despausar();
+            }
+            for(auto _NPC: Game->NPCs)
+            {
+                _NPC->Despausar();
             }
             On=false;
         }
@@ -98,21 +114,6 @@ void Inventario::DibujarInventario(bool _On)
             i++;
             Inicio++;
         }
-        /*for(int i=0; i<Objetos.size();i++)
-        {
-            //Prueba de texto
-            Objetos.find();
-            if(Objetos[i]>0)
-            {
-                Casilla *_Casilla= new Casilla(200,(i+1)*200,100,100,Jugador1->InventarioJugadores.Objetos[i]);
-                QString _Numero=QString::fromStdString(std::to_string(Objetos[i]));
-                QGraphicsTextItem *Numero= new QGraphicsTextItem(_Numero);
-                Numero->setFont(QFont("Times",10));
-                Numero->setPos(210,(i+1)*210);
-                Game->Pantalla->addItem(Numero);
-                //
-                Game->Pantalla->addItem(_Casilla);
-            }*/
     }
     else
     {

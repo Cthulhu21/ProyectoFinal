@@ -31,7 +31,7 @@ void Objeto::Recoger()
             Jugador1->AgregarAInventario(this);
             Game->Pantalla->removeItem(this);
             auto Inicio=Game->ObjetosSuelo.begin();
-            for(auto Elemento: Game->ObjetosSuelo)
+            for(auto Elemento: Game->DropSuelo)
             {
                 if(Elemento==this)
                 {

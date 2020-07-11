@@ -37,9 +37,9 @@ Enemigo::Enemigo(int PosX, int PosY, QGraphicsItem *parent)
 
     connect(Movimiento, SIGNAL(timeout()), this, SLOT(Animar()));
     connect(Estado, SIGNAL(timeout()), this, SLOT(EstadoActual()));
-    connect(MoverEnemigo, SIGNAL(timeout()),this,SLOT(Mover()));
+    //connect(MoverEnemigo, SIGNAL(timeout()),this,SLOT(Mover()));
 
-    MoverEnemigo->start(60);
+    //MoverEnemigo->start(60);
     Movimiento->start(80);
     Estado->start(1);
 
@@ -164,7 +164,7 @@ void Enemigo::EstadoActual()
             A->PosY=500;
             Game->AgregarDrop(A);
             Game->AgregarDrop(Drop);
-            Game->ObjetosSuelo.push_back(Drop);
+            Game->DropSuelo.push_back(Drop);
         }
         Game->Pantalla->removeItem(this);
         auto Comiezo=Game->EnemigosActuales.begin();

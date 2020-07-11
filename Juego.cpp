@@ -6,7 +6,7 @@
 #include <windows.h>
 #include "Enemigo.h"
 #include <NPC.h>
-
+#include <QMouseEvent>
 
 Jugador *Jugador1;
 Jugador *Jugador2;
@@ -88,15 +88,22 @@ void Juego::MenuPausa()
         {
             JuegoActivo=false;
             Jugador1->Pausar();
-            for(int i=0; i<EnemigosActuales.size(); i++)
+            for(auto Enemigo: EnemigosActuales)
             {
-                EnemigosActuales[i]->Pausar();
+                Enemigo->Pausar();
             }
-            for(auto Elemento: ObjetosSuelo)
+            for(auto Elemento: DropSuelo)
             {
                 Elemento->setOpacity(0.5);
             }
-
+            for(auto Elemento : ObjetosSuelo)
+            {
+                Elemento->Pausar();
+            }
+            for(auto _NPC: NPCs)
+            {
+                _NPC->Pausar();
+            }
             int BXPos = this->width()/2 - Continuar->boundingRect().width()/2;
             Continuar->setPos(BXPos, 150);
             Pantalla->addItem(Continuar);
@@ -130,13 +137,21 @@ void Juego::CerrarMenuPausa()
 {
     //Se eliminan los botones del escenario
     Jugador1->Despausar();
-    for(int i =0; i<EnemigosActuales.size(); i++)
+    for(auto Enemigo: EnemigosActuales)
     {
-        EnemigosActuales[i]->Despausar();
+        Enemigo->Despausar();
     }
-    for(auto Elemento: ObjetosSuelo)
+    for(auto Elemento: DropSuelo)
     {
         Elemento->setOpacity(1);
+    }
+    for(auto _NPC: NPCs)
+    {
+        _NPC->Despausar();
+    }
+    for(auto Objeto: ObjetosSuelo)
+    {
+        Objeto->Despausar();
     }
     QList<QGraphicsItem*> Items=Pantalla->items();
     int i=0;
@@ -193,12 +208,16 @@ void Juego::Animacion()
 
     ObjetoDinamico *Objeto=new ObjetoDinamico(200,500,1);
     Pantalla->addItem(Objeto);
+    ObjetosSuelo.push_back(Objeto);
+
     NPC *Heroina= new NPC(1,500,500);
     Pantalla->addItem(Heroina);
-   /*Enemigo *Slime1= new Enemigo(100,100), *Slime2 = new Enemigo(200,200), *Slime3= new Enemigo(300,300);
+    NPCs.push_back(Heroina);
+
+    Enemigo *Slime1= new Enemigo(100,100);//, *Slime2 = new Enemigo(200,200), *Slime3= new Enemigo(300,300);
 
     EnemigosActuales.push_back(Slime1);
-    EnemigosActuales.push_back(Slime2);
+    /*EnemigosActuales.push_back(Slime2);
     EnemigosActuales.push_back(Slime3);*/
 
     Pantalla->addItem(Jugador1);

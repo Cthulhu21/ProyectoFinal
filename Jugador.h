@@ -37,7 +37,7 @@ public:
     void keyPressEvent(QKeyEvent *event);
 
     //Funcion para agregar velocidad y aceleracion a el objeto(Jugador)
-    void Velocidad(float _VelocidadX, float _VelocidadY, float _AceleracionX=0, float _AceleracionY=0);
+    void Velocidad(float _VelocidadX=0, float _VelocidadY=0, float _AceleracionX=0, float _AceleracionY=0);
 
     //Atributos publicos
     int AtaqueJugador=10;
@@ -63,8 +63,7 @@ private:
     void Ataque();
     void Mover();
     void Colisiones();
-    void Reposicionar();
-
+    void Rebote();
 
     //Metodo que retorna una lista de QPixmap que dependerá
     //de la dirección del objeto
