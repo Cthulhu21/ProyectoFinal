@@ -172,6 +172,34 @@ void Jugador::Actualizar()
 {
     Jugador1->setFlag(QGraphicsItem::ItemIsFocusable);
     Jugador1->setFocus();
+    //Se verifica que no esté cambiando de mapa
+    {
+
+        if(PosY<0)
+        {
+            int A=Game->MapaActual.Circundantes[0];
+            Game->CambiarMapaActual(Game->Ma_Pas[A]);
+            PosY=600;
+        }
+        else if(PosX>1400)
+        {
+            int A=Game->MapaActual.Circundantes[1];
+            Game->CambiarMapaActual(Game->Ma_Pas[A]);
+            PosX=100;
+        }
+        else if(PosY>700)
+        {
+            int A=Game->MapaActual.Circundantes[2];
+            Game->CambiarMapaActual(Game->Ma_Pas[A]);
+            PosY=100;
+        }
+        else if(PosX<0)
+        {
+            int A=Game->MapaActual.Circundantes[3];
+            Game->CambiarMapaActual(Game->Ma_Pas[A]);
+            PosX=1300;
+        }
+    }
     if(Vida<=0)
     {
         //Se retorna al primer mapa
@@ -219,7 +247,7 @@ void Jugador::Mover()
     case Primero:
         if(!Atacando)
         {
-            int PlusAceleracion=0, PlusVelocidad=40;
+            int PlusAceleracion=0, PlusVelocidad=100;
             switch (Direccion)
             {
             case Derecha:

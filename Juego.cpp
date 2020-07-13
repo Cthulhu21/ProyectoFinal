@@ -21,6 +21,7 @@ Juego::Juego(QWidget *parent)
 
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     setFixedSize(Ancho, Alto);
 
     Pantalla = new QGraphicsScene;
@@ -36,9 +37,9 @@ void Juego::MenuInicial()
     Pantalla->clear();
 
     // Poner fondo
-    setBackgroundBrush(Ma_Pas[0].FondoMapa);
-    Pantalla->addItem(Ma_Pas[0].Estructura);
-    CambiarMapaActual(Ma_Pas[0]);
+    setBackgroundBrush(QBrush(":/Mapas/Fondo"));
+    QGraphicsPixmapItem *A=new QGraphicsPixmapItem(QPixmap(":/Mapas/1F"));
+    Pantalla->addItem(A);
 
     // Titulo
 
@@ -76,7 +77,33 @@ void Juego::MenuInicial()
 
 void Juego::CambiarMapaActual(Mapa _MapaACambiar)
 {
+    //Limpiar el viejo mapa
+    for(auto Elemento : ObjetosSuelo)
+    {
+        Pantalla->removeItem(Elemento);
+    }
+    //ObjetosSuelo.clear();
+    for(auto Elemento: MapaActual.ObjetosDinamicos)
+    {
+        Pantalla->removeItem(Elemento);
+    }
     MapaActual=_MapaACambiar;
+    for(auto Elemento: DropSuelo)
+    {
+        Pantalla->removeItem(Elemento);
+    }
+    //Añadir los nuevos elementos al mapa
+    setBackgroundBrush(MapaActual.FondoMapa);
+    for(auto Elemento: MapaActual.ObjetosDinamicos)
+    {
+        Pantalla->addItem(Elemento);
+        ObjetosSuelo.push_back(Elemento);
+    }
+    for(auto Elemento: DropSuelo)
+    {
+        Pantalla->addItem(Elemento);
+    }
+    Pantalla->addItem(MapaActual.Estructura);
 }
 
 void Juego::MenuPausa()
@@ -177,18 +204,12 @@ void Juego::Cerrar()
 void Juego::CargarMapas()
 {
     // Se cargarán todos los mapas asociados al juego
-    QImage *_Mapa1= new QImage(":/Mapas/Fondo");
-    QGraphicsPixmapItem *_Fondo= new QGraphicsPixmapItem(QPixmap("/Mapas/Fondo"));
-    Mapa _Mapa(0,_Mapa1, _Fondo);
-    Mapas.push_back(_Mapa);
-    Ma_Pas[0]=_Mapa;
-    for(int i=1; i<2;i++)
+    for(int i=0; i<8;i++)
     {
-        _Mapa1= new QImage(":/Mapas/"+QString(QString::fromStdString(std::to_string(i)))+"F");
-        QGraphicsPixmapItem *Estructura= new QGraphicsPixmapItem(QPixmap(":/Mapas/"+QString(QString::fromStdString(std::to_string(i)))+"E"));
-        Mapa _Mapa(i, _Mapa1, Estructura);
+        Mapa _Mapa(i);
         Ma_Pas[i]=_Mapa;
     }
+    MapaActual= Ma_Pas[1];
 }
 
 void Juego::Animacion()
@@ -198,27 +219,21 @@ void Juego::Animacion()
 
     Pantalla->clear();
 
-    setBackgroundBrush(Ma_Pas[1].FondoMapa);
-    Pantalla->addItem(Ma_Pas[1].Estructura);
-    CambiarMapaActual(Ma_Pas[1]);
+    CambiarMapaActual(Ma_Pas[0]);
 
-    Jugador1= new Jugador(Primero, 500, 500);
+    Jugador1= new Jugador(Primero, 200, 500);
     Jugador1->setFlag(QGraphicsItem::ItemIsFocusable);
     Jugador1->setFocus();
-
-    ObjetoDinamico *Objeto=new ObjetoDinamico(200,500,1);
-    Pantalla->addItem(Objeto);
-    ObjetosSuelo.push_back(Objeto);
 
     NPC *Heroina= new NPC(1,500,500);
     Pantalla->addItem(Heroina);
     NPCs.push_back(Heroina);
 
-    Enemigo *Slime1= new Enemigo(100,100);//, *Slime2 = new Enemigo(200,200), *Slime3= new Enemigo(300,300);
+    Enemigo *Slime1= new Enemigo(100,100), *Slime2 = new Enemigo(200,200), *Slime3= new Enemigo(300,300);
 
     EnemigosActuales.push_back(Slime1);
-    /*EnemigosActuales.push_back(Slime2);
-    EnemigosActuales.push_back(Slime3);*/
+    EnemigosActuales.push_back(Slime2);
+    EnemigosActuales.push_back(Slime3);
 
     Pantalla->addItem(Jugador1);
 }

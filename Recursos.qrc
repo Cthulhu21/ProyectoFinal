@@ -373,8 +373,23 @@
     </qresource>
     <qresource prefix="/Mapas">
         <file alias="Fondo">Recursos/Mapas/Fondo.png</file>
-        <file alias="1F">Recursos/Mapas/Pueblo Fondo.png</file>
-        <file alias="1E">Recursos/Mapas/Pueblo Estructuras.png</file>
+        <file alias="1F">Recursos/Mapas/Fondo - copia.png</file>
+        <file>Recursos/Mapas/0E.png</file>
+        <file>Recursos/Mapas/0F.png</file>
+        <file>Recursos/Mapas/1E.png</file>
+        <file>Recursos/Mapas/1F.png</file>
+        <file>Recursos/Mapas/2E.png</file>
+        <file>Recursos/Mapas/2F.png</file>
+        <file>Recursos/Mapas/3E.png</file>
+        <file>Recursos/Mapas/3F.png</file>
+        <file>Recursos/Mapas/4E.png</file>
+        <file>Recursos/Mapas/4F.png</file>
+        <file>Recursos/Mapas/5E.png</file>
+        <file>Recursos/Mapas/5F.png</file>
+        <file>Recursos/Mapas/6E.png</file>
+        <file>Recursos/Mapas/6F.png</file>
+        <file>Recursos/Mapas/7E.png</file>
+        <file>Recursos/Mapas/7F.png</file>
     </qresource>
     <qresource prefix="/Enemigos">
         <file alias="Slimes">Recursos/Enemigos/Slimes.png</file>
@@ -398,5 +413,8 @@
     </qresource>
     <qresource prefix="/Objeto">
         <file alias="1">Recursos/Objetos/boss chest.png</file>
+    </qresource>
+    <qresource prefix="/Conexiones">
+        <file alias="1">Recursos/Mapas/Conexiones/Mapas.txt</file>
     </qresource>
 </RCC>

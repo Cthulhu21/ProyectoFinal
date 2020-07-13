@@ -6,22 +6,26 @@
 #include <QList>
 #include <QBrush>
 #include <QGraphicsScene>
+#include <ObjetoDinamico.h>
 
 class Mapa: public QBrush
 {
 public:
 
-    Mapa(int _ID=0, QImage *_Fondo= new QImage, QGraphicsPixmapItem *_Estructura= new QGraphicsPixmapItem );
+    Mapa(int _ID=0);
 
     QBrush ConseguirFondo();
-    QList<QPair<QGraphicsPixmapItem *, QPoint> > ConseguirObjetos();
     int ID;
     QBrush FondoMapa;
     QGraphicsPixmapItem *Estructura;
+    QList<ObjetoDinamico*> ObjetosDinamicos;
+    QList<int> Circundantes;
+    //QMap<int, int> *MapasCircuncidantes= new QMap<int, int>;
 
 private:
+    void CargarMapas();
 
-    QList<QPair<QGraphicsPixmapItem *, QPoint>> Objetos;
+    //QList<QPair<QGraphicsPixmapItem *, QPair<int,int>>> Objetos;
 };
 
 #endif // MAPA_H

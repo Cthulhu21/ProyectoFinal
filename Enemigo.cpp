@@ -2,8 +2,6 @@
 #include "Juego.h"
 #include <QTimer>
 #include "Jugador.h"
-#include <QMovie>
-#include <QLabel>
 
 extern Juego *Game;
 extern Jugador *Jugador1;
@@ -40,7 +38,7 @@ Enemigo::Enemigo(int PosX, int PosY, QGraphicsItem *parent)
     //connect(MoverEnemigo, SIGNAL(timeout()),this,SLOT(Mover()));
 
     //MoverEnemigo->start(60);
-    Movimiento->start(80);
+    Movimiento->start(60);
     Estado->start(1);
 
     Game->Pantalla->addItem(this);
@@ -56,16 +54,15 @@ void Enemigo::Pausar()
     setOpacity(0.5);
     Movimiento->stop();
     Estado->stop();
-    MoverEnemigo->stop();
+    //MoverEnemigo->stop();
 }
 
 void Enemigo::Despausar()
 {
     setOpacity(1);
     Movimiento->start(60);
-    MoverEnemigo->start(80);
+    //MoverEnemigo->start(80);
     Estado->start(1);
-
 }
 
 
@@ -164,6 +161,7 @@ void Enemigo::EstadoActual()
             A->PosY=500;
             Game->AgregarDrop(A);
             Game->AgregarDrop(Drop);
+            Game->DropSuelo.push_back(A);
             Game->DropSuelo.push_back(Drop);
         }
         Game->Pantalla->removeItem(this);

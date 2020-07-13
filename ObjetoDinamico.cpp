@@ -95,24 +95,38 @@ void ObjetoDinamico::Colisiones()
 
 void ObjetoDinamico::ColisionJugador()
 {
-    if(Jugador1->Chocando)
+    if(Game->JuegoActivo)
     {
-        switch (Jugador1->Direccion)
+        //if(Jugador1->Chocando)
         {
-        case Derecha:
-            VelocidadX+=100;
-            break;
-        case Izquierda:
-            VelocidadX-=100;
-            break;
-        case Arriba:
-            VelocidadY-=100;
-            break;
-        case Abajo:
-            VelocidadY+=100;
-            break;
-        default:
-            break;
+            QList<QGraphicsItem*> Coli=collidingItems();
+            if(Coli.size()!=0)
+            {
+                for(auto Elemento: Coli)
+                {
+                    if(typeid (*Elemento)==typeid (Jugador))
+                    {
+                        switch (Jugador1->Direccion)
+                        {
+                        case Derecha:
+                            VelocidadX+=100;
+                            break;
+                        case Izquierda:
+                            VelocidadX-=100;
+                            break;
+                        case Arriba:
+                            VelocidadY-=100;
+                            break;
+                        case Abajo:
+                            VelocidadY+=100;
+                            break;
+                        default:
+                            break;
+                        }
+                        break;
+                    }
+                }
+            }
         }
     }
 }

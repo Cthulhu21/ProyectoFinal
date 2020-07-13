@@ -25,6 +25,8 @@ public:
     QList<Objeto*> DropSuelo;
     QList<ObjetoDinamico*> ObjetosSuelo;
     QList<NPC*> NPCs;
+    Mapa MapaActual;
+    QMap<int, Mapa> Ma_Pas;
 
     //Metodos públicos
 
@@ -45,9 +47,9 @@ public:
     //
 private:
     QList<Mapa> Mapas;
-    Mapa MapaActual;
+
     void CargarMapas();
-    QMap<int, Mapa> Ma_Pas;
+
 
 public slots:
 
