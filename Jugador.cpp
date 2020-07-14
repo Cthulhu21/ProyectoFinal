@@ -144,7 +144,6 @@ void Jugador::Pausar()
 
 void Jugador::Despausar()
 {
-    Jugador1->setFocus();
     setOpacity(1);
     Delta->start(1);
     Animacion->start(60);

@@ -40,7 +40,7 @@ void ObjetoDinamico::DarVelocidad(float X, float Y)
 void ObjetoDinamico::Actualizar()
 {
     ColisionJugador();
-    Colisiones();
+
     VectorVelocidad = sqrt((pow(VelocidadX,2)+pow(VelocidadY,2)));
     Angulo = atan2(VelocidadY,VelocidadX);
 
@@ -64,35 +64,6 @@ void ObjetoDinamico::Actualizar()
     setPos(PosX, PosY);
 }
 
-void ObjetoDinamico::Colisiones()
-{
-    QList<QGraphicsItem*> Elementos=collidingItems();
-    if(Elementos.size()!=0 and !Jugador1->GetAtacando())
-    //for(auto Elemento: Elementos)
-    {
-      //  if(typeid (*Elemento)==typeid (NPC))
-        {
-            switch (Jugador1->Direccion)
-            {
-            case Derecha:
-                DarVelocidad(-10);
-                break;
-            case Izquierda:
-                DarVelocidad(10);
-                break;
-            case Arriba:
-                DarVelocidad(0,10);
-                break;
-            case Abajo:
-                DarVelocidad(0,-10);
-                break;
-            default:
-                break;
-            }
-        }
-    }
-}
-
 void ObjetoDinamico::ColisionJugador()
 {
     if(Game->JuegoActivo)
@@ -106,24 +77,27 @@ void ObjetoDinamico::ColisionJugador()
                 {
                     if(typeid (*Elemento)==typeid (Jugador))
                     {
-                        switch (Jugador1->Direccion)
+                        if(!Jugador1->GetAtacando())
                         {
-                        case Derecha:
-                            VelocidadX+=100;
-                            break;
-                        case Izquierda:
-                            VelocidadX-=100;
-                            break;
-                        case Arriba:
-                            VelocidadY-=100;
-                            break;
-                        case Abajo:
-                            VelocidadY+=100;
-                            break;
-                        default:
+                            switch (Jugador1->Direccion)
+                            {
+                            case Derecha:
+                                VelocidadX+=100;
+                                break;
+                            case Izquierda:
+                                VelocidadX-=100;
+                                break;
+                            case Arriba:
+                                VelocidadY-=100;
+                                break;
+                            case Abajo:
+                                VelocidadY+=100;
+                                break;
+                            default:
+                                break;
+                            }
                             break;
                         }
-                        break;
                     }
                 }
             }

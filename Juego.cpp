@@ -92,6 +92,10 @@ void Juego::CambiarMapaActual(Mapa _MapaACambiar)
     {
         Pantalla->removeItem(Elemento);
     }
+    for(auto _Enemigo: EnemigosActuales)
+    {
+        Pantalla->removeItem(_Enemigo);
+    }
     //Añadir los nuevos elementos al mapa
     setBackgroundBrush(MapaActual.FondoMapa);
     for(auto Elemento: MapaActual.ObjetosDinamicos)
@@ -102,6 +106,10 @@ void Juego::CambiarMapaActual(Mapa _MapaACambiar)
     for(auto Elemento: DropSuelo)
     {
         Pantalla->addItem(Elemento);
+    }
+    for(auto _Enemigo: MapaActual.Enemigos)
+    {
+        Pantalla->addItem(_Enemigo);
     }
     Pantalla->addItem(MapaActual.Estructura);
 }
@@ -225,7 +233,9 @@ void Juego::Animacion()
     Jugador1->setFlag(QGraphicsItem::ItemIsFocusable);
     Jugador1->setFocus();
 
-    NPC *Heroina= new NPC(1,500,500);
+    Pantalla->addItem(Jugador1);
+
+    /*NPC *Heroina= new NPC(1,500,500);
     Pantalla->addItem(Heroina);
     NPCs.push_back(Heroina);
 
@@ -233,7 +243,6 @@ void Juego::Animacion()
 
     EnemigosActuales.push_back(Slime1);
     EnemigosActuales.push_back(Slime2);
-    EnemigosActuales.push_back(Slime3);
+    EnemigosActuales.push_back(Slime3);*/
 
-    Pantalla->addItem(Jugador1);
 }

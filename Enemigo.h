@@ -11,20 +11,26 @@ class Enemigo: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    Enemigo(int PosX, int PosY, QGraphicsItem *parent=NULL);
+    Enemigo(int _ID, int PosX, int PosY, QGraphicsItem *parent=NULL);
     void Hurt(int _Hurt);
     void Pausar();
     void Despausar();
+
+    int ID;
+
 private:
     int Ataque;
     int Defensa;
     int Vida;
 
     Objeto *Drop;
+    QList<QPixmap> Sprite;
 
     QTimer *Movimiento;
     QTimer *Estado;
     QTimer *MoverEnemigo;
+
+    void CargarDatos();
 
 
 public slots:

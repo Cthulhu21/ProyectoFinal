@@ -6,27 +6,15 @@
 extern Juego *Game;
 extern Jugador *Jugador1;
 
-QList<QPixmap> Slime;
-
 int FrameMovimiento=0;
 
-Enemigo::Enemigo(int PosX, int PosY, QGraphicsItem *parent)
+Enemigo::Enemigo(int _ID, int PosX, int PosY, QGraphicsItem *parent)
 {
+    ID=_ID;
+    CargarDatos();
     setPos(PosX, PosY);
-    for(int i=1; i<11; i++)
-    {
-        std::string _DireccionArchivo=":/Enemigos/Slime_Par";
-        _DireccionArchivo+=(std::to_string(i));
-        QString DireccionArchivo;
-        for(auto Letra : _DireccionArchivo)
-        {
-            DireccionArchivo+=Letra;
-        }
-        Slime.push_back(QPixmap(DireccionArchivo));
-    }
-    Vida=10;
-    Ataque=10;
-    Defensa=0;
+
+
     Movimiento = new QTimer;
     Estado = new QTimer;
     MoverEnemigo = new QTimer;
@@ -40,8 +28,6 @@ Enemigo::Enemigo(int PosX, int PosY, QGraphicsItem *parent)
     //MoverEnemigo->start(60);
     Movimiento->start(60);
     Estado->start(1);
-
-    Game->Pantalla->addItem(this);
 }
 
 void Enemigo::Hurt(int _Hurt)
@@ -63,6 +49,25 @@ void Enemigo::Despausar()
     Movimiento->start(60);
     //MoverEnemigo->start(80);
     Estado->start(1);
+}
+
+void Enemigo::CargarDatos()
+{
+    switch (ID)
+    {
+    case 1:
+        for(int i=1; i<11; i++)
+        {
+            std::string _DireccionArchivo=":/Enemigos/Slime_Par";
+            Sprite.push_back(QPixmap(QString(QString::fromStdString(_DireccionArchivo+std::to_string(i)))));
+        }
+        Vida=10;
+        Ataque=10;
+        Defensa=0;
+        break;
+    default:
+        break;
+    }
 }
 
 
@@ -117,13 +122,13 @@ void Enemigo::Animar()
 {
     if(Game->JuegoActivo)
     {
-        if(FrameMovimiento>=Slime.size())
+        if(FrameMovimiento>=Sprite.size())
         {
             FrameMovimiento=0;
         }
         else
         {
-            setPixmap(Slime[FrameMovimiento++]);
+            setPixmap(Sprite[FrameMovimiento++]);
         }
     }
 }

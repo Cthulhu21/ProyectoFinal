@@ -79,12 +79,15 @@ Mapa::Mapa(int _ID)
     CargarMapas();
     FondoMapa=QImage(":/Mapas/Recursos/Mapas/"+QString::fromStdString(to_string(_ID)+"F.png"));
     QGraphicsPixmapItem *_Estructura= new QGraphicsPixmapItem;
-    _Estructura->setPixmap(QPixmap(":/Mapas/"+QString::fromStdString(to_string(_ID)+"E.png")));
+    _Estructura->setPixmap(QPixmap(":/Mapas/Recursos/Mapas/"+QString::fromStdString(to_string(_ID)+"E.png")));
     Estructura=_Estructura;
-    if(ID==0)
+    switch (ID)
     {
+    case 0:
         ObjetosDinamicos.push_back(new ObjetoDinamico(200,500,1));
         ObjetosDinamicos.push_back(new ObjetoDinamico(700,100,1));
+        Enemigos.push_back(new Enemigo(1,500,500));
+        break;
     }
 }
 
