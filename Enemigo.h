@@ -23,22 +23,45 @@ private:
     int Defensa;
     int Vida;
 
-    int FrameMovimiento=0;
+    int Frame=0;
+
+    float PosX;
+    float PosY;
+    float VelocidadX=0;
+    float VelocidadY=0;
+    float Angulo;
+    float AceleracionX=0;
+    float AceleracionY=0;
+    float ResistenciaAire=0.06;
+    float VectorVelocidad;
+    float DeltaTiempo=0.01;
+    float PosicionJugadorX;
+    float PosicionJugadorY;
 
     Objeto *Drop;
     QList<QPixmap> Sprite;
+    QList<QPixmap> SpriteAtaque;
+    QList<QPixmap> AtaqueArriba;
+    QList<QPixmap> AtaqueDerecha;
+    QList<QPixmap> AtaqueAbajo;
+    QList<QPixmap> AtaqueIzquierda;
 
     QTimer *Movimiento;
     QTimer *Estado;
     QTimer *MoverEnemigo;
+    QTimer *TimerAtaque;
 
     void CargarDatos();
 
+    bool Atacando=false;
+    bool SeguimientoY=false;
+    bool SeguimientoX=false;
 
 public slots:
     void Mover();
     void Animar();
     void EstadoActual();
+    void EjecutarAtaque();
 };
 
 #endif // ENEMIGO_H

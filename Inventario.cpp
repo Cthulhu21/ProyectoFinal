@@ -33,6 +33,7 @@ void Inventario::MostrarInventario()
 {
     if(Game->JuegoActivo)
     {
+        // Se pausan los objetos en pantalla
         if(!On)
         {
             Jugador1->Pausar();
@@ -54,6 +55,7 @@ void Inventario::MostrarInventario()
             }
             On=true;
         }
+        // Se despausan los objetos
         else
         {
             Jugador1->Despausar();
@@ -75,12 +77,14 @@ void Inventario::MostrarInventario()
             }
             On=false;
         }
+        //Se elige dibujar o no el inventario
         DibujarInventario(On);
     }
 }
 
 void Inventario::DibujarInventario(bool _On)
 {
+    //Se crea el inventio si no está en pantalla
     if(_On)
     {
         //Fondo del inventario
@@ -115,6 +119,7 @@ void Inventario::DibujarInventario(bool _On)
             Inicio++;
         }
     }
+    //Si está en pantalla se borra
     else
     {
         Game->Pantalla->removeItem(Fondo);

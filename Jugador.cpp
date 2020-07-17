@@ -157,6 +157,7 @@ bool Jugador::GetAtacando()
 
 void Jugador::Hurt(int _Hurt)
 {
+    //Hiere al jugador
     Vida-=_Hurt-Defensa;
 }
 
@@ -237,6 +238,7 @@ void Jugador::Actualizar()
 
 void Jugador::Mover()
 {
+    //Le da velocidad al jugador dependiendo la tecla presionada
     switch (Numero)
     {
     case Primero:

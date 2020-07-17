@@ -2,15 +2,18 @@
 #include "Juego.h"
 #include <QTimer>
 #include "Jugador.h"
+#include <math.h>
 
 extern Juego *Game;
 extern Jugador *Jugador1;
 
-Enemigo::Enemigo(int _ID, int PosX, int PosY, QGraphicsItem *parent)
+Enemigo::Enemigo(int _ID, int _PosX, int _PosY, QGraphicsItem *parent)
 {
+    srand(time(NULL));
     ID=_ID;
     CargarDatos();
-    setPos(PosX, PosY);
+    PosX=_PosX;
+    PosY=_PosY;
 
     Drop = new Objeto(1);
 
@@ -37,14 +40,14 @@ void Enemigo::Pausar()
     setOpacity(0.5);
     Movimiento->stop();
     Estado->stop();
-    //MoverEnemigo->stop();
+    MoverEnemigo->stop();
 }
 
 void Enemigo::Despausar()
 {
     setOpacity(1);
-    Movimiento->start(60);
-    //MoverEnemigo->start(80);
+    Movimiento->start(200);
+    MoverEnemigo->start(60);
     Estado->start(1);
 }
 
@@ -94,7 +97,6 @@ void Enemigo::CargarDatos()
         break;
     }
     case 5:
-
     {
         _DireccionArchivo=":/Enemigos/";
         Sprite.push_back(QPixmap(QString(QString::fromStdString(_DireccionArchivo+std::to_string(ID)))).copy(0,0,50,50));
@@ -126,9 +128,12 @@ void Enemigo::CargarDatos()
         _DireccionArchivo=":/Enemigos/";
         for(int i=0;i<4;i++)
         {
-            int a=57+(i*31);
-            auto Tempo=QPixmap(QString(QString::fromStdString(_DireccionArchivo+std::to_string(ID)))).copy(a,112,31,38).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio);
-            Sprite.push_back(Tempo);
+            auto Tempo=QPixmap(QString(QString::fromStdString(_DireccionArchivo+std::to_string(ID))));
+            Sprite.push_back(Tempo.copy(57+(i*31),112,31,38));//.scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            AtaqueArriba.push_back(Tempo.copy(67+(i*30),175,30,44));//.scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            AtaqueIzquierda.push_back(Tempo.copy((i*59),224,59,32));//.scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            AtaqueDerecha.push_back(Tempo.copy(29+(59*i),264,59,32));//.scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            AtaqueAbajo.push_back(Tempo.copy(70+(32*i),302,32,40));//.scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
         }
         Vida=50;
         Ataque=60;
@@ -197,47 +202,40 @@ void Enemigo::CargarDatos()
 void Enemigo::Mover()
 {
     //Busca la posicion del jugador y lo persigue
-    float JugadorPosX=Jugador1->x()+50, JugadorPosY=Jugador1->y()+30;
 
-    // Derecha Abajo
-    if(JugadorPosX > x() and JugadorPosY > y())
+
+    switch (ID)
     {
-        setPos(x()+5, y()+5);
+    case 8:
+    {
+        float JugadorPosX=Jugador1->x()+50, JugadorPosY=Jugador1->y()+30;
+        if(!Atacando)
+        {
+            if(abs(JugadorPosX-x())<50)
+            {
+                PosicionJugadorY=JugadorPosY;
+                SeguimientoY=true;
+                TimerAtaque = new QTimer;
+                Atacando=true;
+                Movimiento->stop();
+                TimerAtaque->start(100);
+                connect(TimerAtaque, SIGNAL(timeout()),this, SLOT(EjecutarAtaque()));
+            }
+            if(abs(JugadorPosY-y())<20)
+            {
+                PosicionJugadorX=JugadorPosX;
+                SeguimientoX=true;
+                TimerAtaque = new QTimer;
+                Atacando=true;
+                Movimiento->stop();
+                TimerAtaque->start(100);
+                connect(TimerAtaque, SIGNAL(timeout()),this, SLOT(EjecutarAtaque()));
+            }
+        }
     }
-    //Izquierda Abajo
-    else if(JugadorPosX < x() and JugadorPosY > y())
-    {
-        setPos(x()-5, y()+5);
-    }
-    //Derecha Arriba
-    else if(JugadorPosX > x() and JugadorPosY < y())
-    {
-        setPos(x() + 5, y() - 5);
-    }
-    //Izquierda Arriba
-    else if(JugadorPosX < x() and JugadorPosY < y())
-    {
-        setPos(x() - 5, y() - 5);
-    }
-    //Derecha
-    else if(JugadorPosX-100 > x())
-    {
-        setX(x() + 5);
-    }
-    //Izquierda
-    else if(JugadorPosX+100 < x())
-    {
-        setX(x() - 5);
-    }
-    //Arriba
-    else if(JugadorPosY-100 < y())
-    {
-        setY(y() - 5);
-    }
-    //Abajo
-    else if(JugadorPosY+100 > y())
-    {
-        setY(y() + 5);
+        break;
+    default:
+        break;
     }
 }
 
@@ -245,13 +243,13 @@ void Enemigo::Animar()
 {
     if(Game->JuegoActivo)
     {
-        if(FrameMovimiento>=Sprite.size())
+        if(Frame>=Sprite.size())
         {
-            FrameMovimiento=0;
+            Frame=0;
         }
         else
         {
-            setPixmap(Sprite[FrameMovimiento++]);
+            setPixmap(Sprite[Frame++]);
         }
     }
 }
@@ -260,6 +258,32 @@ void Enemigo::EstadoActual()
 {
     //Revisa las colisiones del objeto y hará daño o se hará
     //daño de acuerdo al estado del jugador
+    // Se actualizan los datos de posicion y velocidad
+    VectorVelocidad = sqrt((pow(VelocidadX,2)+pow(VelocidadY,2)));
+    Angulo = atan2(VelocidadY,VelocidadX);
+
+    PosX = PosX + VelocidadX*DeltaTiempo + ((AceleracionX*pow(DeltaTiempo,2))/2);
+    PosY = PosY + VelocidadY*DeltaTiempo + ((AceleracionY*pow(DeltaTiempo,2))/2);
+
+    VelocidadX = VelocidadX + AceleracionX*DeltaTiempo;
+    VelocidadY = VelocidadY + AceleracionY*DeltaTiempo;
+
+    AceleracionX = (ResistenciaAire*pow(VectorVelocidad,2))*-cos(Angulo);
+    AceleracionY = (ResistenciaAire*pow(VectorVelocidad,2))*-sin(Angulo);
+
+    // Determina velocidad mínima
+    {
+        float VelocidadMinima=5;
+        if(abs(VelocidadX)<VelocidadMinima)
+        {
+            VelocidadX=0;
+        }
+        if(abs(VelocidadY)<VelocidadMinima)
+        {
+            VelocidadY=0;
+        }
+    }
+    setPos(PosX, PosY);
     QList<QGraphicsItem *> Colisiones=collidingItems();
     for(auto Item: Colisiones)
     {
@@ -277,11 +301,10 @@ void Enemigo::EstadoActual()
     }
     if(Vida<=0)
     {
-        srand(time(NULL));
-        //if((rand()%3)+1==3)
+        if((rand()%3)+1==3)
         {
-            Drop->PosX=((x()+Sprite[FrameMovimiento].width())/2)+300;
-            Drop->PosY=((y()+Sprite[FrameMovimiento].height())/2)-20;
+            Drop->PosX=((x()+Sprite[Frame].width())/2)+300;
+            Drop->PosY=((y()+Sprite[Frame].height())/2)-20;
             Game->AgregarDrop(Drop);
             Game->DropSuelo.push_back(Drop);
         }
@@ -298,5 +321,77 @@ void Enemigo::EstadoActual()
         }
         delete this;
     }
+}
+
+void Enemigo::EjecutarAtaque()
+{
+    switch (ID)
+    {
+    case 8:
+        if(SeguimientoY)
+        {
+            if(abs(y()-PosicionJugadorY)<30)
+            {
+                Atacando=false;
+                SeguimientoY=false;
+                Movimiento->start(200);
+                TimerAtaque->stop();
+            }
+            else
+            {
+                if(y()>PosicionJugadorY)
+                {
+                    VelocidadY-=100;
+                    SpriteAtaque=AtaqueArriba;
+                }
+                else
+                {
+                    SpriteAtaque=AtaqueAbajo;
+                    VelocidadY+=100;
+                }
+                if(Frame>=SpriteAtaque.size())
+                {
+                    Frame=0;
+                }
+                else
+                {
+                    setPixmap(SpriteAtaque[Frame++]);
+                }
+            }
+        }
+        else if(SeguimientoX)
+        {
+            if(abs(x()-PosicionJugadorX)<30)
+            {
+                Atacando=false;
+                SeguimientoX=false;
+                Movimiento->start(200);
+                TimerAtaque->stop();
+            }
+            else
+            {
+                if(x()>PosicionJugadorX)
+                {
+                    VelocidadX-=100;
+                    SpriteAtaque=AtaqueIzquierda;
+                }
+                else
+                {
+                    SpriteAtaque=AtaqueDerecha;
+                    VelocidadX+=100;
+                }
+                if(Frame>=SpriteAtaque.size())
+                {
+                    Frame=0;
+                }
+                else
+                {
+                    setPixmap(SpriteAtaque[Frame++]);
+                }
+            }
+        }
+        break;
+    }
+
 }
 
