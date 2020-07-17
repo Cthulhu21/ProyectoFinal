@@ -68,7 +68,7 @@ void ObjetoDinamico::ColisionJugador()
 {
     if(Game->JuegoActivo)
     {
-        //if(Jugador1->Chocando)
+        if(Jugador1->Chocando)
         {
             QList<QGraphicsItem*> Coli=collidingItems();
             if(Coli.size()!=0)

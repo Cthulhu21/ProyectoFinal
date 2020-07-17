@@ -7,6 +7,8 @@
 #include "Enemigo.h"
 #include <NPC.h>
 #include <QMouseEvent>
+#include <math.h>
+
 
 Jugador *Jugador1;
 Jugador *Jugador2;
@@ -77,39 +79,58 @@ void Juego::MenuInicial()
 
 void Juego::CambiarMapaActual(Mapa _MapaACambiar)
 {
-    //Limpiar el viejo mapa
+    Pantalla->removeItem(MapaActual.Estructura);
+
     for(auto Elemento : ObjetosSuelo)
     {
         Pantalla->removeItem(Elemento);
     }
-    //ObjetosSuelo.clear();
+    ObjetosSuelo.clear();
+
     for(auto Elemento: MapaActual.ObjetosDinamicos)
     {
         Pantalla->removeItem(Elemento);
     }
-    MapaActual=_MapaACambiar;
+
     for(auto Elemento: DropSuelo)
     {
         Pantalla->removeItem(Elemento);
     }
-    for(auto _Enemigo: EnemigosActuales)
+    for(auto _Enemigo:EnemigosActuales)
     {
         Pantalla->removeItem(_Enemigo);
     }
+    //Se reescriben las caracteristicas del enemigo
+
+    QList<QList<float>> Temp;
+    for(auto _Enemigo: EnemigosActuales)
+    {
+        float temp=_Enemigo->ID;
+        Temp.push_back({std::round(temp),float(_Enemigo->x()),float(_Enemigo->y())});
+    }
+    if(Temp.size()!=0)
+    {
+        MapaActual.Enemigos=Temp;
+        Ma_Pas[MapaActual.ID]=MapaActual;
+        EnemigosActuales.clear();
+    }
+
     //Añadir los nuevos elementos al mapa
+    MapaActual=_MapaACambiar;
     setBackgroundBrush(MapaActual.FondoMapa);
     for(auto Elemento: MapaActual.ObjetosDinamicos)
     {
         Pantalla->addItem(Elemento);
         ObjetosSuelo.push_back(Elemento);
     }
-    for(auto Elemento: DropSuelo)
-    {
-        Pantalla->addItem(Elemento);
-    }
     for(auto _Enemigo: MapaActual.Enemigos)
     {
-        Pantalla->addItem(_Enemigo);
+        int ID=_Enemigo[0];
+        int PosX=_Enemigo[1];
+        int PosY=_Enemigo[2];
+        Enemigo *Tempo= new Enemigo(ID, PosX, PosY);
+        Pantalla->addItem(Tempo);
+        EnemigosActuales.push_back(Tempo);
     }
     Pantalla->addItem(MapaActual.Estructura);
 }
@@ -235,6 +256,8 @@ void Juego::Animacion()
 
     Pantalla->addItem(Jugador1);
 
+    //MenuPausa();
+    //MenuPausa();
     /*NPC *Heroina= new NPC(1,500,500);
     Pantalla->addItem(Heroina);
     NPCs.push_back(Heroina);

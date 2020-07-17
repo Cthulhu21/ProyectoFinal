@@ -59,11 +59,6 @@ void Mapa::CargarMapas()
                         {
                             Circundantes.push_back(stoi(I_D));
                         }
-                        /*if(MapasCircuncidantes->find(stoi(I_D))==MapasCircuncidantes->end())
-                        {
-                            Circundantes->push_back(stoi(I_D));
-                            MapasCircuncidantes->insert(stoi(I_D),stoi(I_D));
-                        }*/
                         I_D.clear();
                     }
                 }
@@ -84,9 +79,8 @@ Mapa::Mapa(int _ID)
     switch (ID)
     {
     case 0:
-        ObjetosDinamicos.push_back(new ObjetoDinamico(200,500,1));
-        ObjetosDinamicos.push_back(new ObjetoDinamico(700,100,1));
-        Enemigos.push_back(new Enemigo(1,500,500));
+        //ObjetosDinamicos.push_back(new ObjetoDinamico(400,500,1));
+        Enemigos.push_back({8,500,300});
         break;
     }
 }

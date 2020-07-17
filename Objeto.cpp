@@ -6,10 +6,11 @@ extern Jugador *Jugador1 ;
 
 Objeto::Objeto(int _ID, QGraphicsItem *parent)
 {
-    std::string _Direccion=":/Objetos/"+std::to_string(_ID);
+    std::string _Direccion=":/Objeto/"+std::to_string(_ID);
     QString Direccion=QString::fromStdString(_Direccion);
     Imagen=QPixmap(Direccion).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio);
     ID=_ID;
+    Cantidad=1;
 }
 
 void Objeto::MostrarEnMapa()
@@ -30,12 +31,12 @@ void Objeto::Recoger()
         {
             Jugador1->AgregarAInventario(this);
             Game->Pantalla->removeItem(this);
-            auto Inicio=Game->ObjetosSuelo.begin();
+            auto Inicio=Game->DropSuelo.begin();
             for(auto Elemento: Game->DropSuelo)
             {
                 if(Elemento==this)
                 {
-                    Game->ObjetosSuelo.erase(Inicio);
+                    Game->DropSuelo.erase(Inicio);
                     break;
                 }
                 Inicio++;

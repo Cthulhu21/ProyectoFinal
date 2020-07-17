@@ -8,6 +8,7 @@
 #include <QGraphicsScene>
 #include <ObjetoDinamico.h>
 #include "Enemigo.h"
+#include <QPair>
 
 class Mapa: public QBrush
 {
@@ -19,15 +20,13 @@ public:
     int ID;
     QBrush FondoMapa;
     QGraphicsPixmapItem *Estructura;
+    //QList<QList<float>>
     QList<ObjetoDinamico*> ObjetosDinamicos;
-    QList<Enemigo*> Enemigos;
     QList<int> Circundantes;
-    //QMap<int, int> *MapasCircuncidantes= new QMap<int, int>;
+    QList<QList<float>> Enemigos; //ID, PosX, PosY
 
 private:
     void CargarMapas();
-
-    //QList<QPair<QGraphicsPixmapItem *, QPair<int,int>>> Objetos;
 };
 
 #endif // MAPA_H

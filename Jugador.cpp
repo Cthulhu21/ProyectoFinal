@@ -199,11 +199,11 @@ void Jugador::Actualizar()
             PosX=1300;
         }
     }
-    if(Vida<=0)
+    //if(Vida<=0)
     {
         //Se retorna al primer mapa
     }
-    else
+    //else
     {
         // Se actualizan los datos de posicion y velocidad
         VectorVelocidad = sqrt((pow(VelocidadX,2)+pow(VelocidadY,2)));
@@ -218,10 +218,6 @@ void Jugador::Actualizar()
         AceleracionX = (ResistenciaAire*pow(VectorVelocidad,2))*-cos(Angulo);
         AceleracionY = (ResistenciaAire*pow(VectorVelocidad,2))*-sin(Angulo);
 
-        // Se verifica que no se salga del mapa; si lo hace, se toma como choque -> Velocidad 0
-
-        //PosX=(PosX<0)? 0: PosX;
-        //PosY=(PosY<0)? 0: PosY;
         // Determina velocidad mínima
         {
             float VelocidadMinima=5;
@@ -302,6 +298,7 @@ void Jugador::Colisiones()
         if(typeid(*Elemento)==typeid (ObjetoDinamico))
         {
             Chocando=true;
+            //Rebote();
         }
         else if((typeid (*Elemento)==typeid(NPC)) or
                 (typeid(*Elemento)==typeid (QGraphicsPixmapItem)) or
@@ -321,16 +318,16 @@ void Jugador::Rebote()
     switch (Direccion)
     {
     case Derecha:
-        Velocidad(-10);
+        (Chocando==false)?Velocidad(-10):Velocidad(-2);
         break;
     case Izquierda:
-        Velocidad(10);
+        (Chocando==false)?Velocidad(10):Velocidad(2);
         break;
     case Arriba:
-        Velocidad(0,10);
+        (Chocando==false)?Velocidad(0,10):Velocidad(0,2);
         break;
     case Abajo:
-        Velocidad(0,-10);
+        (Chocando==false)?Velocidad(0,-10):Velocidad(0,-2);
         break;
     default:
         break;
@@ -375,6 +372,7 @@ void Jugador::Velocidad(float _VelocidadX, float _VelocidadY, float _Aceleracion
     VelocidadY+=_VelocidadY;
     AceleracionX+=_AceleracionX;
     AceleracionY+=_AceleracionY;
+    Actualizar();
 }
 
 void Jugador::Movimiento()

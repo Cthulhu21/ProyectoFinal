@@ -23,6 +23,8 @@ private:
     int Defensa;
     int Vida;
 
+    int FrameMovimiento=0;
+
     Objeto *Drop;
     QList<QPixmap> Sprite;
 
