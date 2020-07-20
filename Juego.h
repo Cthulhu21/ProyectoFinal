@@ -33,9 +33,9 @@ public:
     void MenuInicial();
     void CambiarMapaActual(Mapa _MapaACambiar);
     void PonerMapa(Mapa _Mapa);
-
     void MenuPausa();
     void AgregarDrop(Objeto *_Drop);
+    void CargarJugador(float X, float Y, int TV, int TA, int TD, int IDM ,QList<int> IDsO, QList<int> CaO);
 
 
     // Botones
@@ -56,6 +56,8 @@ public slots:
     void Animacion();
     void CerrarMenuPausa();
     void Cerrar();
+    void GuardarPartida();
+    void CargarPartida();
 };
 
 #endif // JUEGO_H

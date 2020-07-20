@@ -409,4 +409,7 @@
     <qresource prefix="/Conexiones">
         <file alias="1">Recursos/Mapas/Conexiones/Mapas.txt</file>
     </qresource>
+    <qresource prefix="/Partidas">
+        <file alias="1">Recursos/Partidas.txt</file>
+    </qresource>
 </RCC>

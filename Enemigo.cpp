@@ -129,11 +129,11 @@ void Enemigo::CargarDatos()
         for(int i=0;i<4;i++)
         {
             auto Tempo=QPixmap(QString(QString::fromStdString(_DireccionArchivo+std::to_string(ID))));
-            Sprite.push_back(Tempo.copy(57+(i*31),112,31,38));//.scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
-            AtaqueArriba.push_back(Tempo.copy(67+(i*30),175,30,44));//.scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
-            AtaqueIzquierda.push_back(Tempo.copy((i*59),224,59,32));//.scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
-            AtaqueDerecha.push_back(Tempo.copy(29+(59*i),264,59,32));//.scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
-            AtaqueAbajo.push_back(Tempo.copy(70+(32*i),302,32,40));//.scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            Sprite.push_back(Tempo.copy(57+(i*31),112,31,38).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            AtaqueArriba.push_back(Tempo.copy(67+(i*30),175,30,44).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            AtaqueIzquierda.push_back(Tempo.copy((i*59),224,59,32).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            AtaqueDerecha.push_back(Tempo.copy(29+(59*i),264,59,32).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            AtaqueAbajo.push_back(Tempo.copy(70+(32*i),302,32,40).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
         }
         Vida=50;
         Ataque=60;
@@ -301,7 +301,8 @@ void Enemigo::EstadoActual()
     }
     if(Vida<=0)
     {
-        if((rand()%3)+1==3)
+        int i=(rand()%3)+1;
+        //if(i==3)
         {
             Drop->PosX=((x()+Sprite[Frame].width())/2)+300;
             Drop->PosY=((y()+Sprite[Frame].height())/2)-20;
@@ -327,7 +328,13 @@ void Enemigo::EjecutarAtaque()
 {
     switch (ID)
     {
+    case 2:
+    {
+        setPixmap(QPixmap(":/Enemigos/2").copy(45,97,16,22));
+    }
+        break;
     case 8:
+    {
         if(SeguimientoY)
         {
             if(abs(y()-PosicionJugadorY)<30)
@@ -390,6 +397,8 @@ void Enemigo::EjecutarAtaque()
                 }
             }
         }
+
+    }
         break;
     }
 

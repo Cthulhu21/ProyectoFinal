@@ -44,6 +44,13 @@ public:
     int Defensa=10;
     int Vida=10;
 
+    int TierAtaque=1;
+    int TierVida=1;
+    int TierDefensa=1;
+
+    float PosX;
+    float PosY;
+
     bool Chocando=false;
 
     Tecla Direccion=Abajo;
@@ -71,8 +78,6 @@ private:
 
     //Atributos
 
-    float PosX;
-    float PosY;
     float VelocidadX;
     float VelocidadY;
     float Angulo;

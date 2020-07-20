@@ -8,7 +8,7 @@
 #include <NPC.h>
 #include <QMouseEvent>
 #include <math.h>
-
+#include <fstream>
 
 Jugador *Jugador1;
 Jugador *Jugador2;
@@ -67,6 +67,7 @@ void Juego::MenuInicial()
     BYPos = 350;
     Cargar->setPos(BXPos, BYPos);
     Pantalla->addItem(Cargar);
+    connect(Cargar, SIGNAL(clicked()), this, SLOT(CargarPartida()));
 
     //Boton para salir
     Boton *Salir = new Boton(QString("Salir"),200,50);
@@ -132,7 +133,7 @@ void Juego::CambiarMapaActual(Mapa _MapaACambiar)
         Pantalla->addItem(Tempo);
         EnemigosActuales.push_back(Tempo);
     }
-    Pantalla->addItem(MapaActual.Estructura);
+    //Pantalla->addItem(MapaActual.Estructura);
 }
 
 void Juego::MenuPausa()
@@ -166,6 +167,7 @@ void Juego::MenuPausa()
             connect(Continuar,SIGNAL(clicked()),this,SLOT(CerrarMenuPausa()));
 
             Guardar->setPos(BXPos, 250);
+            connect(Guardar, SIGNAL(clicked()), this, SLOT(GuardarPartida()));
             Pantalla->addItem(Guardar);
 
             Cargar->setPos(BXPos, 350);
@@ -187,6 +189,30 @@ void Juego::AgregarDrop(Objeto *_Drop)
     //Agrega el objeto recibido al escenario
     Pantalla->addItem(_Drop);
     _Drop->MostrarEnMapa();
+}
+
+void Juego::CargarJugador(float X, float Y, int TV, int TA, int TD, int IDM, QList<int> IDsO, QList<int> CaO)
+{
+    JuegoActivo=true;
+    Pantalla->clear();
+
+    Jugador1= new Jugador(Primero, X, Y);
+    Jugador1->setFlag(QGraphicsItem::ItemIsFocusable);
+    Jugador1->setFocus();
+
+    Jugador1->TierVida=TV;
+    Jugador1->TierAtaque=TA;
+    Jugador1->TierDefensa=TD;
+
+    for(int i=0; i<IDsO.size(); i++)
+    {
+        Objeto *Temp= new Objeto(IDsO[i]);
+        Temp->Cantidad=CaO[i];
+        Jugador1->InventarioJugadores.AgregarObjeto(Temp);
+    }
+
+    CambiarMapaActual(Ma_Pas[IDM]);
+    Pantalla->addItem(Jugador1);
 }
 
 void Juego::CerrarMenuPausa()
@@ -228,6 +254,218 @@ void Juego::CerrarMenuPausa()
 void Juego::Cerrar()
 {
     exit(0);
+}
+
+void Juego::GuardarPartida()
+{
+    //Se guardan los datos del jugador
+    Jugador *a=Jugador1;
+    Jugador *b=Jugador2;
+    //Busca si es una partida de uno o 2 jugadores
+    if(b==nullptr)
+    {
+        float PosX=std::round(a->PosX),PosY= std::round(a->PosY);
+        int TierVida=a->TierVida;
+        int TierAtaque=a->TierAtaque;
+        int TierDefensa=a->TierDefensa;
+        int IDMap=MapaActual.ID;
+        QList<QList<int>> Inventario;
+        auto Begin=a->InventarioJugadores.Objetos.begin();
+        while(Begin!=a->InventarioJugadores.Objetos.end())
+        {
+            Inventario.push_back({Begin.key(),Begin.value()});
+            Begin++;
+        }
+        std::ofstream Archivo;
+        Archivo.open("Partidas.txt",std::ios::out);
+        if(!Archivo.fail())
+        {
+            Archivo<<"1\t"
+            <<std::to_string(PosX)<<"\t"
+            <<std::to_string(PosY)<<"\t"
+            <<std::to_string(TierVida)<<"\t"
+            <<std::to_string(TierAtaque)<<"\t"
+            <<std::to_string(TierDefensa)<<"\t"
+            <<std::to_string(IDMap)<<"\t";
+            for(auto Elemento : Inventario)
+            {
+                Elemento[0];
+                Archivo<<std::to_string(Elemento[0])<<"\t"
+                <<std::to_string(Elemento[1]);
+            }
+        }
+        Archivo.close();
+    }
+}
+
+void Juego::CargarPartida()
+{
+    //Buscar la información de las partidas
+    std::ifstream Archivo;
+    Archivo.open("Partidas.txt", std::ios::in);
+    if(!Archivo.fail())
+    {
+        std::string Linea;
+        while(!Archivo.eof())
+        {
+            std::getline(Archivo, Linea);
+            if(Linea.size()!=0)
+            {
+                std::string _TipoDePartida;
+                _TipoDePartida=Linea[0];
+                int TipoDePartida=std::stoi(_TipoDePartida);
+                switch (TipoDePartida)
+                {
+                case 1:
+                {
+
+                    int i=0;
+                    std::string _X, _Y, _TierVida, _TierAtaque,
+                    _TierDefensa, _IDMapa;
+                    QList<std::string> _IDObjetos,_CantidadObjetos;
+                    for(auto Letra: Linea)
+                    {
+                        switch(i)
+                        {
+                        case 0:
+                            if(Letra=='\t')
+                            {
+                                i++;
+                            }
+                            break;
+                        case 1:
+                        {
+                            if(Letra!='\t')
+                            {
+                                _X+=Letra;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                            break;
+                        case 2:
+                        {
+                            if(Letra!='\t')
+                            {
+                                _Y+=Letra;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                            break;
+                        case 3:
+                        {
+                            if(Letra!='\t')
+                            {
+                                _TierVida+=Letra;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                            break;
+                        case 4:
+                        {
+                            if(Letra!='\t')
+                            {
+                                _TierAtaque+=Letra;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                            break;
+                        case 5:
+                        {
+                            if(Letra!='\t')
+                            {
+                                _TierDefensa+=Letra;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                            break;
+                        case 6:
+                        {
+                            if(Letra!='\t')
+                            {
+                                _IDMapa+=Letra;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                            break;
+                        case 7:
+                        {
+                            if(Letra!='\t')
+                            {
+                                _IDObjetos.push_back(std::string(1,Letra));
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                            break;
+                        case 8:
+                        {
+                            if(Letra!='\t')
+                            {
+                                _CantidadObjetos.push_back(std::string(1,Letra));
+                            }
+                            else
+                            {
+                                i=7;
+                            }
+                        }
+                            break;
+                        default:
+                        {
+                            if(Letra=='\t')
+                            {
+                                i++;
+                            }
+                        }
+                            break;
+                        }
+                    }
+                    int X, Y, TierVida, TierAtaque, TierDefensa, IDMapa;
+                    QList<int> IDObjetos, CantidadObjetos;
+                    {
+                        X=stoi(_X);
+                        Y=stoi(_Y);
+                        TierVida=stoi(_TierVida);
+                        TierAtaque=stoi(_TierAtaque);
+                        TierDefensa=stoi(_TierDefensa);
+                        IDMapa=stoi(_IDMapa);
+                        for(int i=0; i <_IDObjetos.size(); i++)
+                        {
+                            IDObjetos.push_back(stoi(_IDObjetos[i]));
+                            CantidadObjetos.push_back(stoi(_CantidadObjetos[i]));
+                        }
+                    }
+                    CargarJugador(X, Y, TierVida, TierAtaque, TierDefensa, IDMapa, IDObjetos, CantidadObjetos);
+                    Archivo.close();
+                }
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+    }
 }
 
 void Juego::CargarMapas()

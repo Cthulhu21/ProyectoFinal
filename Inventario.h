@@ -11,16 +11,18 @@ class Inventario
 public:
     Inventario();
     // Métodos
+
     void AgregarObjeto(Objeto * _Item);
     void MostrarInventario();
     void CerrarInventario();
     void DibujarInventario(bool);
     //Atributos
+
     bool On=false;
+    QMap<int, int> Objetos; //<ID,Cantidad>
 
 private:
 
-    QMap<int, int> Objetos; //<ID,Cantidad>
     QList<Casilla*> Casillas;
     QList<QGraphicsTextItem*> Numeros;
     int Max_Stack=10;//Maxima cantidad de objetos y montones
