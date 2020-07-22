@@ -53,26 +53,31 @@ void Enemigo::Despausar()
 
 void Enemigo::CargarDatos()
 {
-    std::string _DireccionArchivo;
+    std::string _DireccionArchivo=":/Enemigos/";
     switch (ID)
     {
     case 1:
     {
-        for(int i=1; i<11; i++)
+        auto Tempo=QPixmap(QString(QString::fromStdString(_DireccionArchivo+std::to_string(ID))));
+        for(int i=0; i<4; i++)
         {
-            _DireccionArchivo=":/Enemigos/Slime_Par";
-            Sprite.push_back(QPixmap(QString(QString::fromStdString(_DireccionArchivo+std::to_string(i)))));
+            Sprite.push_back(Tempo.copy(2+(i*17),19,17,16).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
         }
         Vida=10;
         Ataque=10;
         Defensa=0;
-        //Drop = new Objeto(1);
         break;
     }
     case 2:
     {
-        _DireccionArchivo=":/Enemigos/"+std::to_string(ID);
-        Sprite.push_back(QPixmap(QString(QString::fromStdString(_DireccionArchivo))).copy(0,0,25,50));
+        auto Tempo=QPixmap(QString(QString::fromStdString(_DireccionArchivo+std::to_string(ID))));
+        for(int i=0; i<3; i++)
+        {
+            Sprite.push_back(Tempo.copy(29+(i*17),43,17,24).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            //MoverIzquierda.push_back(Tempo.copy(29+(i*17),43,17,24).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            MoverDerecha.push_back(Tempo.copy(25+(i*17),69,17,24).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            AtaqueArriba.push_back(Tempo.copy(45,97,16,22).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+        }
         Vida=20;
         Ataque=12;
         Defensa=5;
@@ -80,17 +85,28 @@ void Enemigo::CargarDatos()
     }
     case 3:
     {
-        _DireccionArchivo=":/Enemigos/";
-        Sprite.push_back(QPixmap(QString(QString::fromStdString(_DireccionArchivo+std::to_string(ID)))).copy(0,0,50,50));
-        Vida=100;
+        auto Tempo=QPixmap(QString(QString::fromStdString(_DireccionArchivo+std::to_string(ID))));
+        for(int i=0; i<3; i++)
+        {
+            Proyectil.push_back(Tempo.copy(11+(i*10),9,10,11).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            Sprite.push_back(Tempo.copy(11+(i*17),26,17,24).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            //AtaqueAbajo.push_back(Tempo.copy(11+(i*17),26,17,24).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+        }
+        Vida=80;
         Ataque=20;
         Defensa=10;
         break;
     }
     case 4:
     {
-        _DireccionArchivo=":/Enemigos/";
-        Sprite.push_back(QPixmap(QString(QString::fromStdString(_DireccionArchivo+std::to_string(ID)))).copy(0,0,50,50));
+        auto Tempo=QPixmap(QString(QString::fromStdString(_DireccionArchivo+std::to_string(ID))));
+        for(int i=0; i<11; i++)
+        {
+            Sprite.push_back(Tempo.copy(203+(i*17),761,17,21).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+            if(i<7)
+                AtaqueDerecha.push_back(Tempo.copy(6+(i*18),903,18,25).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio)); //Saltar
+            AtaqueAbajo.push_back(Tempo.copy(170+(i*20),800,20,33).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
+        }
         Vida=60;
         Ataque=35;
         Defensa=10;

@@ -133,7 +133,7 @@ void Juego::CambiarMapaActual(Mapa _MapaACambiar)
         Pantalla->addItem(Tempo);
         EnemigosActuales.push_back(Tempo);
     }
-    //Pantalla->addItem(MapaActual.Estructura);
+    Pantalla->addItem(MapaActual.Estructura);
 }
 
 void Juego::MenuPausa()

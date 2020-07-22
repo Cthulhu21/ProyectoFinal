@@ -45,6 +45,9 @@ private:
     QList<QPixmap> AtaqueDerecha;
     QList<QPixmap> AtaqueAbajo;
     QList<QPixmap> AtaqueIzquierda;
+    QList<QPixmap> MoverDerecha;
+    QList<QPixmap> MoverIzquierda;
+    QList<QPixmap> Proyectil;
 
     QTimer *Movimiento;
     QTimer *Estado;

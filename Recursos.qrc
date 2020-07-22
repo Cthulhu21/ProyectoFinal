@@ -393,11 +393,11 @@
         <file alias="3">Recursos/Enemigos/3.png</file>
         <file alias="4">Recursos/Enemigos/4.png</file>
         <file alias="5">Recursos/Enemigos/5.png</file>
-        <file alias="6">Recursos/Enemigos/6.gif</file>
         <file alias="7">Recursos/Enemigos/7.png</file>
         <file alias="8">Recursos/Enemigos/8.png</file>
         <file alias="9">Recursos/Enemigos/9.png</file>
         <file alias="10">Recursos/Enemigos/10.png</file>
+        <file alias="6">Recursos/Enemigos/6.png</file>
     </qresource>
     <qresource prefix="/Objetos"/>
     <qresource prefix="/NPCs">
