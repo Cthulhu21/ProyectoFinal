@@ -4,7 +4,7 @@
 #include <QGraphicsRectItem>
 #include <QObject>
 
-class Casilla:public QObject, public QGraphicsRectItem
+class Casilla:public QObject, public QGraphicsPixmapItem
 {
 public:
     Casilla(int X, int Y, int W, int H, int ID);

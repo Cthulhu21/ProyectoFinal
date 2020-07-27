@@ -386,6 +386,8 @@
         <file>Recursos/Mapas/6F.png</file>
         <file>Recursos/Mapas/7E.png</file>
         <file>Recursos/Mapas/7F.png</file>
+        <file>Recursos/Mapas/8E.png</file>
+        <file>Recursos/Mapas/8F.png</file>
     </qresource>
     <qresource prefix="/Enemigos">
         <file alias="1">Recursos/Enemigos/1.png</file>
@@ -399,12 +401,27 @@
         <file alias="10">Recursos/Enemigos/10.png</file>
         <file alias="6">Recursos/Enemigos/6.png</file>
     </qresource>
-    <qresource prefix="/Objetos"/>
+    <qresource prefix="/Drop">
+        <file alias="1">Recursos/Objetos/Perla Gris.png</file>
+        <file alias="2">Recursos/Objetos/Perla Negra.png</file>
+        <file alias="3">Recursos/Objetos/Perla Resplandeciente.png</file>
+        <file alias="4">Recursos/Objetos/Perla Gris - copia (2).png</file>
+        <file alias="7">Recursos/Objetos/Perla Gris - copia.png</file>
+        <file alias="5">Recursos/Objetos/Perla Negra - copia (2).png</file>
+        <file alias="8">Recursos/Objetos/Perla Negra - copia.png</file>
+        <file alias="6">Recursos/Objetos/Perla Resplandeciente - copia (2).png</file>
+        <file alias="9">Recursos/Objetos/Perla Resplandeciente - copia.png</file>
+        <file alias="10">Recursos/Objetos/Perla Negra - copia (2) - copia.png</file>
+    </qresource>
     <qresource prefix="/NPCs">
         <file alias="1">Recursos/NPCs/Hero_Strong_Female_01_idle_down.png</file>
     </qresource>
     <qresource prefix="/Objeto">
         <file alias="1">Recursos/Objetos/boss chest.png</file>
+        <file alias="2">Recursos/Objetos/Cube.png</file>
+        <file alias="3">Recursos/Objetos/Perla Gris.png</file>
+        <file alias="4">Recursos/Objetos/Perla Negra.png</file>
+        <file alias="5">Recursos/Objetos/Perla Resplandeciente.png</file>
     </qresource>
     <qresource prefix="/Conexiones">
         <file alias="1">Recursos/Mapas/Conexiones/Mapas.txt</file>

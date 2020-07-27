@@ -42,7 +42,6 @@ public:
 
     Boton *Continuar = new Boton(QString("Continuar"), 200, 50);
     Boton *Guardar = new Boton(QString("Guardar"), 200, 50);;
-    Boton *Cargar = new Boton(QString("Cargar"), 200, 50);;
     Boton *Salir = new Boton(QString("Salir"), 200, 50);;
     //
 private:

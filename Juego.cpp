@@ -99,8 +99,15 @@ void Juego::CambiarMapaActual(Mapa _MapaACambiar)
     }
     for(auto _Enemigo:EnemigosActuales)
     {
-        Pantalla->removeItem(_Enemigo);
+        delete _Enemigo;
+        //Pantalla->removeItem(_Enemigo);
     }
+    for(auto _NPC:NPCs)
+    {
+        delete _NPC;
+        //Pantalla->removeItem(_NPC);
+    }
+    NPCs.clear();
     //Se reescriben las caracteristicas del enemigo
 
     QList<QList<float>> Temp;
@@ -133,6 +140,15 @@ void Juego::CambiarMapaActual(Mapa _MapaACambiar)
         Pantalla->addItem(Tempo);
         EnemigosActuales.push_back(Tempo);
     }
+    for(auto _NPC: MapaActual.NPCs)
+    {
+        int ID=_NPC[0];
+        int PosX=_NPC[1];
+        int PosY=_NPC[2];
+        NPC *Temp= new NPC(ID, PosX, PosY);
+        Pantalla->addItem(Temp);
+        NPCs.push_back(Temp);
+    }
     Pantalla->addItem(MapaActual.Estructura);
 }
 
@@ -161,6 +177,7 @@ void Juego::MenuPausa()
             {
                 _NPC->Pausar();
             }
+
             int BXPos = this->width()/2 - Continuar->boundingRect().width()/2;
             Continuar->setPos(BXPos, 150);
             Pantalla->addItem(Continuar);
@@ -170,11 +187,9 @@ void Juego::MenuPausa()
             connect(Guardar, SIGNAL(clicked()), this, SLOT(GuardarPartida()));
             Pantalla->addItem(Guardar);
 
-            Cargar->setPos(BXPos, 350);
-            Pantalla->addItem(Cargar);
-
-            Salir->setPos(BXPos, 450);
+            Salir->setPos(BXPos, 350);
             Pantalla->addItem(Salir);
+            connect(Salir, SIGNAL(clicked()), this, SLOT(Cerrar()));
         }
         else
         {
@@ -289,9 +304,8 @@ void Juego::GuardarPartida()
             <<std::to_string(IDMap)<<"\t";
             for(auto Elemento : Inventario)
             {
-                Elemento[0];
                 Archivo<<std::to_string(Elemento[0])<<"\t"
-                <<std::to_string(Elemento[1]);
+                <<std::to_string(Elemento[1])<<"\t";
             }
         }
         Archivo.close();
@@ -321,7 +335,7 @@ void Juego::CargarPartida()
 
                     int i=0;
                     std::string _X, _Y, _TierVida, _TierAtaque,
-                    _TierDefensa, _IDMapa;
+                    _TierDefensa, _IDMapa, _Cantidad;
                     QList<std::string> _IDObjetos,_CantidadObjetos;
                     for(auto Letra: Linea)
                     {
@@ -421,10 +435,13 @@ void Juego::CargarPartida()
                         {
                             if(Letra!='\t')
                             {
-                                _CantidadObjetos.push_back(std::string(1,Letra));
+                                _Cantidad+=Letra;
                             }
                             else
                             {
+                                _CantidadObjetos.push_back(_Cantidad);
+                                //_CantidadObjetos.push_back(std::string(1,_Cantidad));
+                                _Cantidad.clear();
                                 i=7;
                             }
                         }

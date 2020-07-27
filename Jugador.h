@@ -14,7 +14,7 @@
 //Será útil para cambios de sprites de movimiento con switch
 enum Tecla {Derecha, Izquierda, Arriba, Abajo,
             D_Derecha, A_Izquierda, W_Arriba, S_Abajo, Espacio,
-            Esc, I,
+            Esc, I, Z,
             NULA};
 
 //Enumerar primer o segundo jugador
@@ -54,6 +54,8 @@ public:
     bool Chocando=false;
 
     Tecla Direccion=Abajo;
+
+    Tecla Presionada;
 
     Inventario InventarioJugadores;
 
@@ -107,7 +109,7 @@ private:
     bool Atacando=false;
     bool FixAtaque=false;
     bool AtaqueEfectivo=false;
-
+    bool Pausa=false;
 
     Tecla TeclaPresionada(QKeyEvent *event);
 

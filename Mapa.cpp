@@ -11,7 +11,6 @@ extern Juego *Game;
 void Mapa::CargarMapas()
 {
     ifstream Archivo;
-    //Archivo.open(":/Conexiones/1");
     Archivo.open("C:/Users/William/Documents/Info II/ProyectoFinal/Recursos/Mapas/Conexiones/Mapas.txt");
     if(!Archivo.fail())
     {
@@ -79,8 +78,11 @@ Mapa::Mapa(int _ID)
     switch (ID)
     {
     case 0:
+        NPCs.push_back({1,400,300});
+        NPCs.push_back({2,850,100});
+        NPCs.push_back({3,1000,600});
         //ObjetosDinamicos.push_back(new ObjetoDinamico(400,500,1));
-        Enemigos.push_back({8,500,300});
+        //Enemigos.push_back({8,500,300});
         break;
     }
 }

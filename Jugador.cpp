@@ -137,6 +137,7 @@ void Jugador::CargarSprites()
 
 void Jugador::Pausar()
 {
+    Pausa=true;
     setOpacity(0.5);
     Delta->stop();
     Animacion->stop();
@@ -144,6 +145,7 @@ void Jugador::Pausar()
 
 void Jugador::Despausar()
 {
+    Pausa=false;
     setOpacity(1);
     Delta->start(1);
     Animacion->start(60);
@@ -239,56 +241,59 @@ void Jugador::Actualizar()
 void Jugador::Mover()
 {
     //Le da velocidad al jugador dependiendo la tecla presionada
-    switch (Numero)
+    if(!Pausa)
     {
-    case Primero:
-        if(!Atacando)
+        switch (Numero)
         {
-            int PlusAceleracion=0, PlusVelocidad=100;
-            switch (Direccion)
+        case Primero:
+            if(!Atacando)
             {
-            case Derecha:
-                Jugador1->Velocidad(VelocidadX+PlusVelocidad, VelocidadY, AceleracionX+PlusAceleracion, AceleracionY);
-                break;
-            case Izquierda:
-                Jugador1->Velocidad(VelocidadX-PlusVelocidad, VelocidadY, AceleracionX-PlusAceleracion, AceleracionY);
-                break;
-            case Arriba:
-                Jugador1->Velocidad(VelocidadX, VelocidadY-PlusVelocidad, AceleracionX, AceleracionY-PlusAceleracion);
-                break;
-            case Abajo:
-                Jugador1->Velocidad(VelocidadX, VelocidadY+PlusVelocidad, AceleracionX,AceleracionY+PlusAceleracion);
-                break;
-            default:
-                break;
+                int PlusAceleracion=0, PlusVelocidad=100;
+                switch (Direccion)
+                {
+                case Derecha:
+                    Jugador1->Velocidad(VelocidadX+PlusVelocidad, VelocidadY, AceleracionX+PlusAceleracion, AceleracionY);
+                    break;
+                case Izquierda:
+                    Jugador1->Velocidad(VelocidadX-PlusVelocidad, VelocidadY, AceleracionX-PlusAceleracion, AceleracionY);
+                    break;
+                case Arriba:
+                    Jugador1->Velocidad(VelocidadX, VelocidadY-PlusVelocidad, AceleracionX, AceleracionY-PlusAceleracion);
+                    break;
+                case Abajo:
+                    Jugador1->Velocidad(VelocidadX, VelocidadY+PlusVelocidad, AceleracionX,AceleracionY+PlusAceleracion);
+                    break;
+                default:
+                    break;
+                }
             }
-        }
-        break;
-    case Segundo:
-        if(!Atacando)
-        {
-            int PlusAceleracion=0, PlusVelocidad=40;
-            switch (Direccion)
+            break;
+        case Segundo:
+            if(!Atacando)
             {
-            case Derecha:
-                Jugador2->Velocidad(VelocidadX+PlusVelocidad, VelocidadY, AceleracionX+PlusAceleracion, AceleracionY);
-                break;
-            case Izquierda:
-                Jugador2->Velocidad(VelocidadX-PlusVelocidad, VelocidadY, AceleracionX-PlusAceleracion, AceleracionY);
-                break;
-            case Arriba:
-                Jugador2->Velocidad(VelocidadX, VelocidadY-PlusVelocidad, AceleracionX, AceleracionY-PlusAceleracion);
-                break;
-            case Abajo:
-                Jugador2->Velocidad(VelocidadX, VelocidadY+PlusVelocidad, AceleracionX,AceleracionY+PlusAceleracion);
-                break;
-            default:
-                break;
+                int PlusAceleracion=0, PlusVelocidad=40;
+                switch (Direccion)
+                {
+                case Derecha:
+                    Jugador2->Velocidad(VelocidadX+PlusVelocidad, VelocidadY, AceleracionX+PlusAceleracion, AceleracionY);
+                    break;
+                case Izquierda:
+                    Jugador2->Velocidad(VelocidadX-PlusVelocidad, VelocidadY, AceleracionX-PlusAceleracion, AceleracionY);
+                    break;
+                case Arriba:
+                    Jugador2->Velocidad(VelocidadX, VelocidadY-PlusVelocidad, AceleracionX, AceleracionY-PlusAceleracion);
+                    break;
+                case Abajo:
+                    Jugador2->Velocidad(VelocidadX, VelocidadY+PlusVelocidad, AceleracionX,AceleracionY+PlusAceleracion);
+                    break;
+                default:
+                    break;
+                }
             }
+            break;
+        default:
+            break;
         }
-        break;
-    default:
-        break;
     }
 }
 
@@ -346,13 +351,17 @@ void Jugador::keyPressEvent(QKeyEvent *event)
     switch (Presionada)
     {
     case Espacio:
-        if(!Atacando)
-            Ataque();
+        if(!Pausa)
+        {
+            if(!Atacando)
+                Ataque();
+        }
         break;
     case Derecha:
     case Izquierda:
     case Arriba:
     case Abajo:
+        if(!Pausa)
         Mover();
         break;
     case Esc:
@@ -394,41 +403,45 @@ Tecla Jugador::TeclaPresionada(QKeyEvent *event)
 {
     //Función que retorna una "Tecla" con el valor de la tecla presiona
     // Se verifica que no se esté ejecutando la animación de ataque
-    Tecla Presionada=NULA;
+    Tecla _Presionada=NULA;
     if(!Atacando)
     {
         // Se verifica cuál tecla se presiona
         switch (event->key())
         {
         case Qt::Key_Space:
-            Presionada=Espacio;
+            _Presionada=Espacio;
             break;
         case Qt::Key_Up:
             Direccion=Arriba;
             _Direccion=Direccion;
-            Presionada=Arriba;
+            _Presionada=Arriba;
             break;
         case Qt::Key_Down:
             Direccion=Abajo;
             _Direccion=Direccion;
-            Presionada=Abajo;
+            _Presionada=Abajo;
             break;
         case Qt::Key_Right:
             Direccion=Derecha;
             _Direccion=Direccion;
-            Presionada=Derecha;
+            _Presionada=Derecha;
             break;
         case Qt::Key_Left:
             Direccion=Izquierda;
             _Direccion=Direccion;
-            Presionada=Izquierda;
+            _Presionada=Izquierda;
             break;
         case Qt::Key_Escape:
-            Presionada=Esc;
+            _Presionada=Esc;
             Direccion=_Direccion;
             break;
         case Qt::Key_I:
-            Presionada=I;
+            _Presionada=I;
+            Direccion=_Direccion;
+            break;
+        case Qt::Key_Z:
+            _Presionada=Z;
             Direccion=_Direccion;
             break;
         default:
@@ -436,7 +449,8 @@ Tecla Jugador::TeclaPresionada(QKeyEvent *event)
             break;
         }
     }
-    return Presionada;
+    Presionada=_Presionada;
+    return _Presionada;
 }
 
 void Jugador::EjecutarMovimientos()

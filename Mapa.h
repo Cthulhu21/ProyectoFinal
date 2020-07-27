@@ -9,6 +9,7 @@
 #include <ObjetoDinamico.h>
 #include "Enemigo.h"
 #include <QPair>
+#include "NPC.h"
 
 class Mapa: public QBrush
 {
@@ -20,7 +21,7 @@ public:
     int ID;
     QBrush FondoMapa;
     QGraphicsPixmapItem *Estructura;
-    //QList<QList<float>>
+    QList<QList<float>> NPCs; //ID, PosX, PosY
     QList<ObjetoDinamico*> ObjetosDinamicos;
     QList<int> Circundantes;
     QList<QList<float>> Enemigos; //ID, PosX, PosY

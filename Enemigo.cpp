@@ -15,7 +15,7 @@ Enemigo::Enemigo(int _ID, int _PosX, int _PosY, QGraphicsItem *parent)
     PosX=_PosX;
     PosY=_PosY;
 
-    Drop = new Objeto(1);
+    Drop = new Objeto(ID);
 
     Movimiento = new QTimer;
     Estado = new QTimer;

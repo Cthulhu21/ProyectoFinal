@@ -23,7 +23,6 @@ void Inventario::AgregarObjeto(Objeto *_Item)
     else
     {
         Mapa.insert(_Item->ID,_Item->Cantidad);
-        Mapa[_Item->ID]=1;
     }
     //Jugador1->InventarioJugadores.Objetos=this->Objetos;
     Jugador1->InventarioJugadores.Objetos=Mapa;
@@ -100,15 +99,15 @@ void Inventario::DibujarInventario(bool _On)
         Game->Pantalla->addItem(Titulo);
 
         //Casillas del inventario
-        int i=0;
+        int i=0, j=0;
         auto Inicio=Objetos.begin();
         for(auto Elemento: Objetos)
         {
-            Casilla *_Casilla= new Casilla(200,(i+1)*200,100,100,Inicio.key());
+            Casilla *_Casilla = new Casilla(200+(125*(i%4)),200+(125*(j%4)),100,100,Inicio.key());
             QString _Numero=QString::fromStdString(std::to_string(Elemento));
             QGraphicsTextItem *Numero= new QGraphicsTextItem(_Numero);
             Numero->setFont(QFont("Times",10));
-            Numero->setPos(500,(i+1)*210);
+            Numero->setPos(250+(125*((i)%4)),210 +(((j)%4)*125));
             Game->Pantalla->addItem(Numero);
             //
             Game->Pantalla->addItem(_Casilla);
@@ -117,6 +116,8 @@ void Inventario::DibujarInventario(bool _On)
             Numeros.push_back(Numero);
             i++;
             Inicio++;
+            if(i%4==3)
+                j++;
         }
     }
     //Si está en pantalla se borra
