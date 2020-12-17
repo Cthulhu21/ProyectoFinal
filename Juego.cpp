@@ -54,7 +54,7 @@ void Juego::MenuInicial()
     Pantalla->addItem(Titulo);
 
     //Boton para jugar
-    Boton *Jugar = new Boton(QString("Jugar"),200,50);
+    Boton *Jugar = new Boton("Jugar",200,50);
     int BXPos = this->width()/2 - Jugar->boundingRect().width()/2;
     int BYPos= 250;
     Jugar->setPos(BXPos, BYPos);
@@ -110,11 +110,11 @@ void Juego::CambiarMapaActual(Mapa _MapaACambiar)
     NPCs.clear();
     //Se reescriben las caracteristicas del enemigo
 
-    QList<QList<float>> Temp;
+    QList<QList<int>> Temp;
     for(auto _Enemigo: EnemigosActuales)
     {
         float temp=_Enemigo->ID;
-        Temp.push_back({std::round(temp),float(_Enemigo->x()),float(_Enemigo->y())});
+        Temp.push_back({int(std::round(temp)),int(_Enemigo->x()),int(_Enemigo->y())});
     }
     if(Temp.size()!=0)
     {
@@ -316,7 +316,7 @@ void Juego::CargarPartida()
 {
     //Buscar la información de las partidas
     std::ifstream Archivo;
-    Archivo.open("Partidas.txt", std::ios::in);
+    Archivo.open(":/Partidas/1", std::ios::in);
     if(!Archivo.fail())
     {
         std::string Linea;
@@ -488,7 +488,7 @@ void Juego::CargarPartida()
 void Juego::CargarMapas()
 {
     // Se cargarán todos los mapas asociados al juego
-    for(int i=0; i<8;i++)
+    for(int i=0; i<9;i++)
     {
         Mapa _Mapa(i);
         Ma_Pas[i]=_Mapa;

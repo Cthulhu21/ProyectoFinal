@@ -160,7 +160,7 @@ bool Jugador::GetAtacando()
 void Jugador::Hurt(int _Hurt)
 {
     //Hiere al jugador
-    Vida-=_Hurt-Defensa;
+    Vida-=_Hurt-Defensa*pow(2,TierDefensa);
 }
 
 void Jugador::AgregarAInventario(Objeto *_Objeto)
@@ -179,34 +179,41 @@ void Jugador::Actualizar()
 
         if(PosY<0)
         {
+            auto Temp=Game->MapaActual.Circundantes;
             int A=Game->MapaActual.Circundantes[0];
             Game->CambiarMapaActual(Game->Ma_Pas[A]);
             PosY=600;
         }
         else if(PosX>1400)
         {
+            auto Temp=Game->MapaActual.Circundantes;
             int A=Game->MapaActual.Circundantes[1];
             Game->CambiarMapaActual(Game->Ma_Pas[A]);
-            PosX=100;
+            PosX=30;
         }
         else if(PosY>700)
         {
+            auto Temp=Game->MapaActual.Circundantes;
             int A=Game->MapaActual.Circundantes[2];
             Game->CambiarMapaActual(Game->Ma_Pas[A]);
-            PosY=100;
+            PosY=30;
         }
         else if(PosX<0)
         {
+            auto Temp=Game->MapaActual.Circundantes;
             int A=Game->MapaActual.Circundantes[3];
             Game->CambiarMapaActual(Game->Ma_Pas[A]);
             PosX=1300;
         }
     }
-    //if(Vida<=0)
+    if(Vida<=0)
     {
         //Se retorna al primer mapa
+        Game->CambiarMapaActual(Game->Ma_Pas[0]);
+        PosX=500;
+        PosY=500;
     }
-    //else
+    else
     {
         // Se actualizan los datos de posicion y velocidad
         VectorVelocidad = sqrt((pow(VelocidadX,2)+pow(VelocidadY,2)));
@@ -221,7 +228,7 @@ void Jugador::Actualizar()
         AceleracionX = (ResistenciaAire*pow(VectorVelocidad,2))*-cos(Angulo);
         AceleracionY = (ResistenciaAire*pow(VectorVelocidad,2))*-sin(Angulo);
 
-        // Determina velocidad mínima
+        // Determina velocidad mínima*
         {
             float VelocidadMinima=5;
             if(abs(VelocidadX)<VelocidadMinima)
@@ -305,11 +312,11 @@ void Jugador::Colisiones()
         if(typeid(*Elemento)==typeid (ObjetoDinamico))
         {
             Chocando=true;
-            //Rebote();
         }
         else if((typeid (*Elemento)==typeid(NPC)) or
                 (typeid(*Elemento)==typeid (QGraphicsPixmapItem)) or
-                (typeid (*Elemento)==typeid(Enemigo)))
+                (typeid (*Elemento)==typeid(Enemigo)) or
+                (typeid (*Elemento)==typeid(Jugador)))
         {
             Rebote();
         }
@@ -615,7 +622,6 @@ void Jugador::EjecutarAtaque()
         }
         else
         {
-            //setPos(PosX-65, PosY-58);
             setPixmap(AtacarIzquierda[FrameMovimiento++]);
         }
         break;
@@ -635,7 +641,6 @@ void Jugador::EjecutarAtaque()
         }
         else
         {
-            //setPos(PosX-65, PosY-58);
             setPixmap(AtacarArriba[FrameMovimiento++]);
         }
         break;
@@ -655,7 +660,6 @@ void Jugador::EjecutarAtaque()
         }
         else
         {
-            //setPos(PosX-65, PosY-58);
             setPixmap(AtacarAbajo[FrameMovimiento++]);
         }
         break;

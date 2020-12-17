@@ -17,6 +17,7 @@ public:
     void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
 
 signals:
+    void PasarSobre();
     void clicked();
 
 private:

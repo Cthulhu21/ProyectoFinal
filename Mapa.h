@@ -24,7 +24,7 @@ public:
     QList<QList<float>> NPCs; //ID, PosX, PosY
     QList<ObjetoDinamico*> ObjetosDinamicos;
     QList<int> Circundantes;
-    QList<QList<float>> Enemigos; //ID, PosX, PosY
+    QList<QList<int>> Enemigos; //ID, PosX, PosY
 
 private:
     void CargarMapas();

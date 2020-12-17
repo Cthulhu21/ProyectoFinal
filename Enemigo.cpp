@@ -74,7 +74,6 @@ void Enemigo::CargarDatos()
         for(int i=0; i<3; i++)
         {
             Sprite.push_back(Tempo.copy(29+(i*17),43,17,24).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
-            //MoverIzquierda.push_back(Tempo.copy(29+(i*17),43,17,24).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
             MoverDerecha.push_back(Tempo.copy(25+(i*17),69,17,24).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
             AtaqueArriba.push_back(Tempo.copy(45,97,16,22).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
         }
@@ -90,7 +89,6 @@ void Enemigo::CargarDatos()
         {
             Proyectil.push_back(Tempo.copy(11+(i*10),9,10,11).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
             Sprite.push_back(Tempo.copy(11+(i*17),26,17,24).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
-            //AtaqueAbajo.push_back(Tempo.copy(11+(i*17),26,17,24).scaled(50,50,Qt::AspectRatioMode::KeepAspectRatio));
         }
         Vida=80;
         Ataque=20;
@@ -307,7 +305,7 @@ void Enemigo::EstadoActual()
         {
             if(Jugador1->GetAtacando())
             {
-                Hurt(Jugador1->AtaqueJugador);
+                Hurt(Jugador1->AtaqueJugador*pow(2,Jugador1->TierAtaque));
             }
             else
             {
@@ -318,7 +316,7 @@ void Enemigo::EstadoActual()
     if(Vida<=0)
     {
         int i=(rand()%3)+1;
-        //if(i==3)
+        if(i==3)
         {
             Drop->PosX=((x()+Sprite[Frame].width())/2)+300;
             Drop->PosY=((y()+Sprite[Frame].height())/2)-20;
